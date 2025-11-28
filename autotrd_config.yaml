@@ -1,0 +1,3813 @@
+#Date 2022-06-30
+#Version 'Added FlexFL and Metal'
+###########
+# config #
+##########
+GenericModule:
+  toolID:
+    kw: "UI/toolID"
+    dtype: "txt"
+    attr:
+      - "Tool_Mod"
+    groupby: False
+
+  GasBox_Config:
+    kw: "/Gas/GasTable"
+    dtype: "txt"
+    attr:
+      - "Gas_Value"
+      - "MaxFlow"
+      - "Gas"
+    groupby: False
+
+  GasBox_Interlock:
+    kw: "/GasInterlock/GasInterlock"
+    dtype: "txt"
+    groupby: False
+
+  PM_ConfigOpt:
+    kw: '/PM\d+.*?ConfigOptions'
+    dtype: "txt"
+    groupby: True
+
+  HostImage_CV:
+    kw: "HostImageConstants"
+    dtype: "cv"
+    mos_info: "definedMachineConstants"
+    groupb: False
+
+  LightTower_CV:
+    kw: "LightTower"
+    dtype: "cv"
+    groupby: False
+
+  Airlock_CV:
+    kw: '/AirLock\d+'
+    dtype: "cv"
+    groupby: False
+
+  Port_CV:
+    kw: '/Port\d+'
+    dtype: "cv"
+    groupby: False
+
+  AtmArm_CV:
+    kw: "/AtmArm"
+    dtype: "cv"
+    groupby: False
+
+  TM_CV:
+    kw: "/TransferChamber"
+    dtype: "cv"
+    groupby: False
+
+  TM_CV2:
+    kw: "/TransferChamber2"
+    dtype: "cv"
+    groupby: False
+
+  PM_CV:
+    kw: '/PM\d{1,2}'
+    dtype: "cv"
+    groupby: True
+
+  SW_Configopt:
+    kw: "/ConfigOptionsAll"
+    dtype: "txt"
+    groupby: False
+
+  CoolStation_CV:
+    kw: '/CoolStationAL\d'
+    dtype: "cv"
+    groupby: False
+
+GasDelivery: &GasDelivery
+  Ten_PT_Cal:
+    kw: '^((?!.*(copy|old)).)*Calibration\d{0,1}TenPoint'
+    dtype: "mos"
+    mos_info: "TenPTCal"
+    spec_attr:
+      - "Error"
+      - "ActualFlow"
+    spec_info:
+      - "GasLine"
+      - "GasName"
+      - "%MaxFlow"
+    spec_ao: "RequestedFlow"
+    groupby: False
+    plot:
+      Error:
+        sheet: "excel_doc"
+        x: "%MaxFlow"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error Ten Point Calibration"
+        unit: "%"
+        facet:
+          - "GasLine"
+          - "GasName"
+        plotloc: "A"
+      ActualFlow:
+        sheet: "excel_doc"
+        x: "%MaxFlow"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "ActualFlow AFV Ten Point"
+        unit: "%"
+        facet:
+          - "GasLine"
+          - "GasName"
+        plotloc: "J"
+
+  PartialPressure:
+    kw: "PartialPressure"
+    dtype: "mos"
+    spec_attr:
+      - "Pressures"
+    spec_info:
+      - "GasLine"
+      - "GasName"
+      - "%MaxFlow"
+    spec_ao: "Flows"
+    groupby: False
+
+    plot:
+      Pressures:
+        sheet: "excel_doc"
+        x: "%MaxFlow"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Partial Pressure"
+        unit: ""
+        facet:
+          - "GasLine"
+          - "GasName"
+        plotloc: "A"
+
+  # AFV2_Compensation:
+  #   kw: 'GasCompensation\d{1}Calibration'
+  #   dtype: 'mos'
+  #   spec_attr:
+  #     - 'AcceptedCompensationError'
+  #     - 'AcceptedCompensationActual'
+  #   spec_info:
+  #     - 'GasLine'
+  #     - 'GasName'
+  #     - '%MaxFlow'
+  #   spec_ao: 'AcceptedCompensationSetpoint'
+  #   groupby: True
+  #   plot:
+  #     AcceptedCompensationError:
+  #       sheet: 'excel_doc'
+  #       x: '%MaxFlow'
+  #       hue: 'pmalias'
+  #       plot_funct: 'lineplot'
+  #       title: 'Error AFV Compensation'
+  #       unit: '%'
+  #       facet:
+  #         - 'GasLine'
+  #         - 'GasName'
+  #       plotloc: 'A'
+
+RFDelivery: &RFDelivery
+  TCP_Linearity:
+    kw: "TCPRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "MaxPower"
+      - "MeterReadings"
+      - "PMReadings"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading TCP Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PMReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "PM Reading TCP Linearity"
+        unit: "(V)"
+        facet:
+        plotloc: "G"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error PerSetpoint Meter Reading TCP Linearity "
+        unit: "(%Error)"
+        facet:
+        plotloc: "W"
+
+  TCCT_NoPlasmaTest:
+    kw: "TCCTNoPlasma"
+    dtype: "mos"
+    spec_attr:
+      - "Slopes"
+      - "Rsquared"
+    spec_info:
+      TCPWindowTempControl: "None"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      Slopes:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "TCCT No Plasma Test Slope"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+  Bias_Linearity:
+    kw: "BiasRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "MaxPower"
+      - "MeterReadings"
+      - "PMReadings"
+    spec_info:
+      HVBPVersion: "V1"
+      HVBP: "true"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading Bias Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PMReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "PM Reading Bias Linearity"
+        unit: "(V)"
+        facet:
+        plotloc: "G"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error PerSetpointMeter Reading Bias Linearity"
+        unit: "(%Error)"
+        facet:
+        plotloc: "W"
+
+  Bias_Voltage_Probe:
+    kw: "BiasVoltageProbe"
+    dtype: "mos"
+    spec_attr:
+      - "Slope"
+      - "Rsquared"
+      - "Capacitance"
+      - "Forwards"
+      - "VProbes"
+      - "VProbeSquareds"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      Slope:
+        sheet: "excel_doc"
+        x: "pmalias"
+        hue: "pmalias"
+        plot_funct: "barplot"
+        title: "No Plasma Test Slope"
+        unit: " "
+        facet:
+        plotloc: "A"
+      VProbeSquareds:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Voltage Probe No Plasma Test"
+        unit: "(V^2)"
+        facet:
+        plotloc: "H"
+
+VaccumPresControl: &VaccumPresControl
+  Valve_Conductance:
+    kw: "ValveConductance"
+    dtype: "mos"
+    spec_attr:
+      - "Slope"
+      - "ConductancesAtDown"
+    spec_info:
+      - "Positions"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      ConductancesAtDown:
+        sheet: "excel_doc"
+        x: "Positions"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Valve Conductance"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+  VATAutoLearn:
+    kw: "VATAutoLearnData"
+    dtype: "mos"
+    spec_attr:
+      - "Pressure"
+    spec_info:
+      - "GasName"
+    spec_ao: "Position"
+    groupby: False
+    plot:
+      Pressure:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "VAT AutoLearn"
+        unit: "mTorr"
+        facet:
+        plotloc: "A"
+
+CorvusOption: &CorvusOption
+  CorvusCalibration:
+    kw: "TESCalibration"
+    dtype: "mos"
+    mos_info: "Current"
+    spec_attr:
+      - "calibration.Delta"
+      - "calibration.measured"
+      - "verification.Delta"
+      - "verification.measured"
+      - "ringPartNumber"
+      - "ringSerialNumber"
+      - "basePocketHeight"
+    spec_info:
+      - "verification.name"
+      - "verification.Setpoints"
+      - "verification.axis"
+      - "calibration.name"
+      - "calibration.Setpoints"
+      - "calibration.axis"
+    spec_ao:
+    groupby: False
+    plot:
+      verification.Delta:
+        sheet: "excel_doc"
+        x: "verification.name"
+        hue: "verification.axis"
+        plot_funct: "barplot"
+        title: "Corvus - Verification Chart"
+        unit: ""
+        facet: "pmalias"
+        plotloc: "A"
+
+################
+# KiyoF config #
+################
+KiyoF: &KiyoF
+  <<: *GasDelivery
+  <<: *RFDelivery
+  <<: *VaccumPresControl
+  <<: *CorvusOption
+  ef_Bias_Voltage_Probe:
+    spec_info:
+      MZTESCType: "NA"
+      EdgeRingMaterial: "Quartz"
+  FixedGasOrifice:
+    kw: "FixedOrificeCurrent"
+    dtype: "mos"
+    spec_attr:
+      - "current"
+    spec_info: []
+    spec_ao: "TestNumber"
+    groupby: False
+    plot:
+      current:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "barplot"
+        title: "Fixed Gas Orifice"
+        unit: ""
+        facet:
+          - "pmalias"
+        plotloc: "A"
+
+#################
+# KiyoGX config #
+#################
+KiyoGX: &KiyoGX
+  <<: *KiyoF
+  TCCT_NoPlasmaTest:
+    kw: "TCCTNoPlasma"
+    dtype: "mos"
+    spec_attr:
+      - "Slopes"
+      - "Rsquared"
+    spec_info:
+      ReverseCurrentTCCTMatch: "false"
+      KiyoPulsingConfig: "Presto"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      Slopes:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "TCCT No Plasma Test Slope"
+        unit: ""
+        facet: "KiyoPulsingConfig"
+        plotloc: "A"
+
+  Bias2_Linearity:
+    kw: "Bias2RFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "MaxPower"
+      - "MeterReadings"
+    spec_info: []
+    #spec_info:
+    #  BiasRF2Installed: 'false'
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading Bias Linearity"
+        unit: "(V)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error PerSetpoint Meter Reading Bias Linearity"
+        unit: "(V)"
+        facet:
+        plotloc: "H"
+
+  Bias_Voltage_Probe:
+    kw: "BiasVoltageProbe"
+    dtype: "mos"
+    spec_attr:
+      - "cwDict.Slope"
+      - "cwDict.Rsquared"
+      - "cwDict.Capacitance"
+      - "cwDict.Forwards"
+      - "cwDict.VProbes"
+      - "cwDict.VProbeSquareds"
+      - "pulseDict.Slope"
+      - "pulseDict.Rsquared"
+      - "pulseDict.Capacitance"
+      - "pulseDict.Forwards"
+      - "pulseDict.VProbes"
+      - "pulseDict.VProbeSquareds"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      cwDict.Slope:
+        sheet: "excel_doc"
+        x: "pmalias"
+        hue: "pmalias"
+        plot_funct: "barplot"
+        title: "CW No Plasma Test Slope"
+        unit: " "
+        facet:
+        plotloc: "A"
+
+      cwDict.VProbeSquareds:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "CW Voltage Probe No Plasma Test"
+        unit: "(V^2)"
+        facet:
+        plotloc: "H"
+
+      pulseDict.Slope:
+        sheet: "excel_doc"
+        x: "pmalias"
+        hue: "pmalias"
+        plot_funct: "barplot"
+        title: "Pulse No Plasma Test Slope"
+        unit: " "
+        facet:
+        plotloc: "W"
+
+      pulseDict.VProbeSquareds:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Pulse Voltage Probe No Plasma Test"
+        unit: "(V^2)"
+        facet:
+        plotloc: "AM"
+
+  Bias2_Voltage_Probe:
+    kw: "Bias2VoltageProbe"
+    dtype: "mos"
+    spec_attr:
+      - "cwDict.Slope"
+      - "cwDict.Rsquared"
+      - "cwDict.VProbeSquareds"
+      - "pulseDict.Slope"
+      - "pulseDict.Rsquared"
+      - "pulseDict.VProbeSquareds"
+    spec_info: []
+    #spec_info:
+    #  - 'BiasRF2Installed'
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      cwDict.Slope:
+        sheet: "excel_doc"
+        x: "pmalias"
+        hue: "pmalias"
+        plot_funct: "barplot"
+        title: "CW No Plasma Test Slope"
+        unit: " "
+        facet:
+        plotloc: "A"
+
+      cwDict.VProbeSquareds:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "CW Voltage Probe No Plasma Test"
+        unit: "(V^2)"
+        facet:
+        plotloc: "H"
+
+      pulseDict.Slope:
+        sheet: "excel_doc"
+        x: "pmalias"
+        hue: "pmalias"
+        plot_funct: "barplot"
+        title: "Pulse No Plasma Test Slope"
+        unit: " "
+        facet:
+        plotloc: "W"
+
+      pulseDict.VProbeSquareds:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Pulse Voltage Probe No Plasma Test"
+        unit: "(V^2)"
+        facet:
+        plotloc: "AM"
+
+  TCP_Voltage_Probe:
+    kw: "TCPVoltageProbe"
+    dtype: "mos"
+    spec_attr:
+      - "cwDict.Slopes"
+    spec_info:
+      - "KiyoPulsingConfig"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      cwDict.Slopes:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Max CW Slopes Probe No Plasma Test"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+  FixedGasOrifice:
+    kw: "FixedOrificeCurrent"
+    dtype: "mos"
+    spec_attr:
+      - "current"
+    spec_info: []
+    spec_ao: "TestNumber"
+    groupby: False
+    plot:
+      current:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "barplot"
+        title: "Fixed Gas Orifice"
+        unit: ""
+        facet:
+          - "pmalias"
+        plotloc: "A"
+
+#################
+# Selis config #
+#################
+Selis: &Selis
+  <<: *KiyoF
+  Valve_Conductance:
+    kw: "ValveConductance"
+    dtype: "mos"
+    spec_attr:
+      - "ConductancesAtDown"
+    spec_info: []
+    spec_ao: "Positions"
+    groupby: False
+    plot:
+      ConductancesAtDown:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Valve Conductance At Down"
+        unit: ""
+        facet:
+        plotloc: "A"
+#################
+# Prevos config #
+#################
+Prevos: &Prevos
+  <<: *KiyoF
+  Valve_Conductance:
+    kw: "ValveConductance"
+    dtype: "mos"
+    spec_attr:
+      - "ConductancesAtDown"
+    spec_info: []
+    spec_ao: "Positions"
+    groupby: False
+    plot:
+      ConductancesAtDown:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Valve Conductance At Down"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+  BiasPulseNPT: False
+
+  # ef_Bias_Voltage_Probe: False
+
+KiyoGXE:
+  <<: *KiyoGX
+
+#################
+# KiyoGP config #
+#################
+KiyoGP:
+  <<: *KiyoF
+  TCCT_NoPlasmaTest:
+    kw: "TCCTNoPlasma"
+    dtype: "mos"
+    spec_attr:
+      - "Slopes"
+      - "Rsquared"
+    spec_info:
+      TCCTMatchID: "V_222"
+      TDK2: "false"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      Slopes:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "TCCT No Plasma Test Slope"
+        unit: ""
+        facet: "TCCTMatchID"
+        plotloc: "A"
+
+  ef_Bias_Voltage_Probe:
+    kw: "BiasVoltageProbe"
+    dtype: "mos"
+    spec_attr:
+      - "Slope"
+      - "Rsquared"
+      - "Capacitance"
+      - "Forwards"
+      - "VProbes"
+      - "VProbeSquareds"
+    spec_info:
+      MZTESCType: "V_889"
+      TESController: "false"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      Slope:
+        sheet: "excel_doc"
+        x: "pmalias"
+        hue: "pmalias"
+        plot_funct: "barplot"
+        title: "No Plasma Test Slope"
+        unit: " "
+        facet:
+        plotloc: "A"
+      VProbeSquareds:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Voltage Probe No Plasma Test"
+        unit: "(V^2)"
+        facet:
+        plotloc: "H"
+
+################
+# Syndion config #
+################
+Syndion:
+  <<: *KiyoF
+  Valve_Conductance:
+    kw: "ValveConductance"
+    dtype: "mos"
+    spec_attr:
+      - "ConductancesAtDown"
+    spec_info: []
+    spec_ao: "Positions"
+    groupby: False
+    plot:
+      ConductancesAtDown:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Valve Conductance At Down"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+################
+# KiyoC config #
+################
+KiyoCSeries: &KiyoCSeries
+  <<: *KiyoF
+  TCCT_NoPlasmaTest:
+    kw: "TCCTNoPlasma"
+    dtype: "mos"
+    spec_attr:
+      - "Slopes"
+      - "Rsquared"
+    spec_info:
+      TCPWindowTempControl: "None"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      Slopes:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "TCCT No Plasma Test Slope"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+  Bias_Linearity:
+    kw: "BiasRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "MaxPower"
+      - "MeterReadings"
+      - "PMReadings"
+    spec_info:
+      BiasRFPulsing: "false"
+      HVBP: "false"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading Bias Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PMReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "PM Reading Bias Linearity"
+        unit: "(V)"
+        facet:
+        plotloc: "G"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error PerSetpointMeter Reading Bias Linearity"
+        unit: "(%Error)"
+        facet:
+        plotloc: "W"
+
+  ef_Bias_Voltage_Probe:
+    kw: "BiasVoltageProbe"
+    dtype: "mos"
+    spec_attr:
+      - "Slope"
+      - "Rsquared"
+      - "Capacitance"
+      - "Forwards"
+      - "VProbes"
+      - "VProbeSquareds"
+    spec_info:
+      FourZoneESCHeater: "false"
+      MultiZoneExtRangeTESC: "None"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      Slope:
+        sheet: "excel_doc"
+        x: "pmalias"
+        hue: "pmalias"
+        plot_funct: "barplot"
+        title: " No Plasma Test Slope"
+        unit: " "
+        facet:
+        plotloc: "A"
+      VProbeSquareds:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Voltage Probe No Plasma Test"
+        unit: "(V^2)"
+        facet:
+        plotloc: "H"
+
+################
+# KiyoE config #
+################
+KiyoESeries:
+  <<: *KiyoCSeries
+
+  ef_Bias_Voltage_Probe:
+    spec_info:
+      MZTESCType: "NA"
+      EdgeRingMaterial: "Quartz"
+
+################
+# KiyoEXP config #
+################
+KiyoEXP:
+  <<: *KiyoCSeries
+
+  ef_Bias_Voltage_Probe:
+    spec_info:
+      MZTESCType: "NA"
+      EdgeRingMaterial: "Quartz"
+
+################
+# Flexsys config #
+################
+Flexsys: &Flex
+  <<: *GasDelivery
+
+  Valve_Conductance:
+    kw: "ValveConductance"
+    dtype: "mos"
+    spec_attr:
+      #- 'Slope'
+      - "ConductancesAtDown"
+      - "ConductancesAtUp"
+    spec_info:
+      - "Positions"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      ConductancesAtDown:
+        sheet: "excel_doc"
+        x: "Positions"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Valve Conductance at Down"
+        unit: ""
+        facet:
+        plotloc: "A"
+      ConductancesAtUp:
+        sheet: "excel_doc"
+        x: "Positions"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Valve Conductance at Up"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+  WAP_Conductance:
+    kw: "^((?!.*(copy|old)).)*WAPConductance"
+    dtype: "mos"
+    spec_attr:
+      - "CurrentConductance.Conductances"
+      - "CurrentConductance.CalculatedOffset"
+    spec_info:
+      - "BaselineConductance.Conductances"
+    spec_ao: "CurrentConductance.Positions"
+    groupby: False
+    plot:
+      "CurrentConductance.Conductances":
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "WAP Conductance"
+        unit: ""
+        facet:
+        plotloc: "A"
+        yref: "BaselineConductance.Conductances"
+
+  VATAutoLearn:
+    kw: "VATAutoLearnData"
+    dtype: "mos"
+    spec_attr:
+      - "Pressure"
+    spec_info:
+      - "GasName"
+    spec_ao: "Position"
+    groupby: False
+    plot:
+      Pressure:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "VAT AutoLearn"
+        unit: "mTorr"
+        facet:
+        plotloc: "A"
+######################
+# Exelan Flex config #
+######################
+Flex:
+  One_PT_Cal:
+    kw: '^((?!.*(copy|old)).)*Calibration\d{0,1}OnePoint'
+    dtype: "mos"
+    mos_info: "OnePTCal"
+    spec_attr:
+      - "Error"
+    spec_info:
+      - "GasLine"
+      - "GasName"
+    spec_ao: "RequestedFlow"
+    groupby: True
+    plot:
+      Error:
+        sheet: "excel_doc"
+        x: "GasLine"
+        hue: "pmalias"
+        plot_funct: "barplot"
+        title: "Error One Point Calibration"
+        unit: "%"
+        facet:
+        plotloc: "A"
+
+  Ten_PT_Cal:
+    kw: "^((?!.*(copy|old)).)*MeasurementTenPoint"
+    dtype: "mos"
+    mos_info: "TenPTCal"
+    spec_attr:
+      - "Error"
+    spec_info:
+      - "GasLine"
+      - "GasName"
+      - "%MaxFlow"
+    spec_ao: "TenPointOrificeCalSetpoint"
+    groupby: False
+    plot:
+      Error:
+        sheet: "excel_doc"
+        x: "%MaxFlow"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error Ten Point Calibration"
+        unit: "%"
+        facet:
+          - "GasLine"
+          - "GasName"
+        plotloc: "A"
+
+  AFV_One_PT:
+    kw: "^((?!.*(copy|old)).)*MeasurementOnePoint"
+    dtype: "mos"
+    mos_info: "OnePTCal"
+    spec_attr:
+      - "Error"
+    spec_info:
+      - "GasLine"
+      - "GasName"
+    spec_ao: "RequestedFlow"
+    groupby: True
+    plot:
+      Error:
+        sheet: "excel_doc"
+        x: "GasLine"
+        hue: "pmalias"
+        plot_funct: "barplot"
+        title: "Error AFV One Point"
+        unit: "%"
+        facet:
+        plotloc: "A"
+
+  AFV_Ten_PT:
+    kw: "^((?!.*(copy|old)).)*MeasurementTenPoint"
+    dtype: "mos"
+    mos_info: "TenPTCal"
+    spec_attr:
+      - "Error"
+    spec_info:
+      - "GasLine"
+      - "GasName"
+      - "%MaxFlow"
+    spec_ao: "TenPointOrificeCalSetpoint"
+    groupby: True
+    plot:
+      Error:
+        sheet: "excel_doc"
+        x: "%MaxFlow"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error AFV Ten Point"
+        unit: "%"
+        facet:
+          - "GasLine"
+          - "GasName"
+        plotloc: "A"
+
+  AFV_Compensation:
+    kw: '^((?!.*(copy|old)).)*GasCompensation\d{0,1}Calibration'
+    dtype: "mos"
+    spec_attr:
+      - "AcceptedCompensationError"
+    spec_info:
+      - "GasLine"
+      - "GasName"
+      - "%MaxFlow"
+    spec_ao: "AcceptedCompensationSetpoint"
+    groupby: True
+    plot:
+      AcceptedCompensationError:
+        sheet: "excel_doc"
+        x: "%MaxFlow"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error AFV Compensation"
+        unit: "%"
+        facet:
+          - "GasLine"
+          - "GasName"
+        plotloc: "A"
+
+  PartialPressure:
+    kw: "^((?!.*(copy|old)).)*PartialPressure"
+    dtype: "mos"
+    spec_attr:
+      - "Pressures"
+    spec_info:
+      - "GasLine"
+      - "GasName"
+      - "%MaxFlow"
+    spec_ao: "Flows"
+    groupby: False
+    plot:
+      Pressures:
+        sheet: "excel_doc"
+        x: "%MaxFlow"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Partial Pressure"
+        unit: ""
+        facet:
+          - "GasLine"
+          - "GasName"
+        plotloc: "A"
+
+  2MHzRFLinearity:
+    kw: "^((?!.*(copy|old)).)*2MHzRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PMReadings"
+      - "MeterReadings"
+      - "Slope"
+      - "Rsquared"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading vs Setpoints 2Mhz Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Percent Error 2MHZ Linearity PerSetpoint"
+        unit: "(%)"
+        facet:
+        plotloc: "G"
+
+  27MHzRFLinearity:
+    kw: "^((?!.*(copy|old)).)*27MHzRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PMReadings"
+      - "MeterReadings"
+      - "Slope"
+      - "Rsquared"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading vs Setpoints 27Mhz Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Percent Error 27MHZ Linearity PerSetpoint"
+        unit: "(%)"
+        facet:
+        plotloc: "G"
+
+  60MHzRFLinearity:
+    kw: "^((?!.*(copy|old)).)*60MHzRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PMReadings"
+      - "MeterReadings"
+      - "Slope"
+      - "Rsquared"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading vs Setpoints 60Mhz Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Percent Error 60MHZ Linearity PerSetpoint"
+        unit: "(%)"
+        facet:
+        plotloc: "G"
+
+  VC_At_Down:
+    kw: "^((?!.*(copy|old)).)*ValveConductance"
+    dtype: "mos"
+    spec_attr:
+      - "ConductancesAtDown"
+    spec_info:
+      Gap: "Gap2_0"
+      WaferSize: "_200MM"
+    spec_ao: "Positions"
+    groupby: False
+    plot:
+      ConductancesAtDown:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Valve Conductance At Down"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+  VC_At_Up:
+    kw: "^((?!.*(copy|old)).)*ValveConductance"
+    dtype: "mos"
+    spec_attr:
+      - "ConductancesAtUp"
+    spec_info:
+      Gap: "Gap2_0"
+      WaferSize: "_200MM"
+    spec_ao: "Positions"
+    groupby: False
+    plot:
+      ConductancesAtUp:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Valve Conductance At Up"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+  WAP_Conductance:
+    kw: '^((?!.*(copy|old|\w+\sWAPConductance|-522)).)*WAPConductance(?!\sHCK)'
+    dtype: "mos"
+    spec_attr:
+      - "CurrentConductance.Conductances"
+    spec_info:
+      Gap: "Gap2_0"
+      WaferSize: "_200MM"
+      GasName: "Ar"
+      ConfinementHardware: "None"
+    spec_ao: "CurrentConductance.Positions"
+    groupby: False
+    plot:
+      "CurrentConductance.Conductances":
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "WAP Conductance"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+##################
+# Flex FX config #
+##################
+FlexFX:
+  <<: *Flex
+
+  2MHzRFLinearity:
+    kw: "^((?!.*(copy|old)).)*2MHzRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PMReadings"
+      - "MeterReadings"
+      - "Slope"
+      - "Rsquared"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading vs Setpoints 2Mhz Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Percent Error 2MHZ Linearity PerSetpoint"
+        unit: "(%)"
+        facet:
+        plotloc: "G"
+
+  27MHzRFLinearity:
+    kw: "^((?!.*(copy|old)).)*27MHzRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PMReadings"
+      - "MeterReadings"
+      - "Slope"
+      - "Rsquared"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading vs Setpoints 27Mhz Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Percent Error 27MHZ Linearity PerSetpoint"
+        unit: "(%)"
+        facet:
+        plotloc: "G"
+
+  60MHzRFLinearity:
+    kw: "^((?!.*(copy|old)).)*60MHzRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PMReadings"
+      - "MeterReadings"
+      - "Slope"
+      - "Rsquared"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading vs Setpoints 60Mhz Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Percent Error 60MHZ Linearity PerSetpoint"
+        unit: "(%)"
+        facet:
+        plotloc: "G"
+
+  VC_At_Down:
+    kw: "^((?!.*(copy|old)).)*ValveConductance"
+    dtype: "mos"
+    spec_attr:
+      - "ConductancesAtDown"
+    spec_info: []
+    spec_ao: "Positions"
+    groupby: False
+    plot:
+      ConductancesAtDown:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Valve Conductance At Down"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+  VC_At_Up:
+    kw: "^((?!.*(copy|old)).)*ValveConductance"
+    dtype: "mos"
+    spec_attr:
+      - "ConductancesAtUp"
+    spec_info: []
+    spec_ao: "Positions"
+    groupby: False
+    plot:
+      ConductancesAtUp:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Valve Conductance At Up"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+  WAP_Conductance:
+    kw: '^((?!.*(copy|old|\w+\sWAPConductance|-522)).)*WAPConductance'
+    dtype: "mos"
+    spec_attr:
+      - "CurrentConductance.Conductances"
+    spec_info: []
+    spec_ao: "CurrentConductance.Positions"
+    groupby: False
+    plot:
+      "CurrentConductance.Conductances":
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "WAP Conductance"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+##################
+# Flex FL config #
+##################
+FlexFL:
+  <<: *Flex
+
+  2MHzRFLinearity:
+    kw: "^((?!.*(copy|old)).)*2MHzRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "PMReadings"
+      - "MeterReadings"
+      - "Slope"
+      - "Rsquared"
+    spec_info:
+      LPA: "false"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading vs Setpoints 2Mhz Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Percent Error 2MHZ Linearity PerSetpoint"
+        unit: "(%)"
+        facet:
+        plotloc: "G"
+
+  27MHzRFLinearity:
+    kw: "^((?!.*(copy|old)).)*27MHzRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "PMReadings"
+      - "MeterReadings"
+      - "Slope"
+      - "Rsquared"
+    spec_info:
+      LP: "false"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading vs Setpoints 27Mhz Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Percent Error 27MHZ Linearity PerSetpoint"
+        unit: "(%)"
+        facet:
+        plotloc: "G"
+
+  60MHzRFLinearity:
+    kw: "^((?!.*(copy|old)).)*60MHzRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "PMReadings"
+      - "MeterReadings"
+      - "Slope"
+      - "Rsquared"
+    spec_info:
+      LPA: "false"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading vs Setpoints 60Mhz Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Percent Error 60MHZ Linearity PerSetpoint"
+        unit: "(%)"
+        facet:
+        plotloc: "G"
+
+  WAP_Conductance:
+    kw: '^((?!.*(copy|old|\w+\sWAPConductance|-522)).)*WAPConductance'
+    dtype: "mos"
+    spec_attr:
+      - "CurrentConductance.Conductances"
+    spec_info:
+      HighConductanceKit: "HCK"
+      ConfinementHardware: "None"
+      MultiZoneExtRangeTESC: "None"
+    spec_ao: "CurrentConductance.Positions"
+    groupby: False
+    plot:
+      "CurrentConductance.Conductances":
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "WAP Conductance"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+  FixedGasOrifice:
+    kw: "FixedOrificeCurrent"
+    dtype: "mos"
+    spec_attr:
+      - "current"
+    spec_info: []
+    spec_ao: "TestNumber"
+    groupby: False
+    plot:
+      current:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "barplot"
+        title: "Fixed Gas Orifice"
+        unit: ""
+        facet:
+          - "pmalias"
+        plotloc: "A"
+  AFV_Ten_PT: #2025/11 Darren for N2 FLEX FL use AFV Ten Point
+    kw: "^((?!.*(copy|old)).)*MeasurementTenPoint"
+    dtype: "mos"
+    mos_info: "TenPTCal"
+    spec_attr:
+      - "Error"
+    spec_info:
+      - "GasLine"
+      - "GasName"
+      - "%MaxFlow"
+    spec_ao: "TenPointOrificeCalSetpoint"
+    groupby: True
+    plot:
+      Error:
+        sheet: "excel_doc"
+        x: "%MaxFlow"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error AFV Ten Point"
+        unit: "%"
+        facet:
+          - "GasLine"
+          - "GasName"
+        plotloc: "A"
+
+  GapDriveCalibration:
+    kw: "GapDriveCalibration"
+    dtype: "mos"
+    spec_attr:
+      - "Average"
+      - "GapOffset"
+      - "PosAtCenter"
+      - "Pitch"
+      - "Roll"
+      - "PosAt3"
+      - "PosAt6"
+      - "PosAt9"
+      - "PosAt12"
+    spec_info: []
+    spec_ao: []
+    groupby: False
+
+##################
+# Flex GL config #
+##################
+FlexGL:
+  <<: *Flex
+
+  2MHzRFLinearity:
+    kw: "^((?!.*(copy|old)).)*2MHzRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "PMReadings"
+      - "MeterReadings"
+      - "Slope"
+      - "Rsquared"
+    spec_info:
+      LPA: "false"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading vs Setpoints 2Mhz Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Percent Error 2MHZ Linearity PerSetpoint"
+        unit: "(%)"
+        facet:
+        plotloc: "G"
+
+  27MHzRFLinearity:
+    kw: "^((?!.*(copy|old)).)*27MHzRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "PMReadings"
+      - "MeterReadings"
+      - "Slope"
+      - "Rsquared"
+    spec_info:
+      LP: "false"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading vs Setpoints 27Mhz Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Percent Error 27MHZ Linearity PerSetpoint"
+        unit: "(%)"
+        facet:
+        plotloc: "G"
+
+  60MHzRFLinearity:
+    kw: "^((?!.*(copy|old)).)*60MHzRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "PMReadings"
+      - "MeterReadings"
+      - "Slope"
+      - "Rsquared"
+    spec_info:
+      LPA: "false"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading vs Setpoints 60Mhz Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Percent Error 60MHZ Linearity PerSetpoint"
+        unit: "(%)"
+        facet:
+        plotloc: "G"
+
+  WAP_Conductance:
+    kw: '^((?!.*(copy|old|\w+\sWAPConductance|-522)).)*WAPConductance'
+    dtype: "mos"
+    spec_attr:
+      - "CurrentConductance.Conductances"
+    spec_info:
+      HighConductanceKit: "HCK"
+      ConfinementHardware: "None"
+      MultiZoneExtRangeTESC: "None"
+    spec_ao: "CurrentConductance.Positions"
+    groupby: False
+    plot:
+      "CurrentConductance.Conductances":
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "WAP Conductance"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+  FixedGasOrifice2:
+    kw: "FixedOrificeCurrent2"
+    dtype: "mos"
+    spec_attr:
+      - "current"
+    spec_info: []
+    spec_ao: "TestNumber"
+    groupby: False
+    plot:
+      current:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "barplot"
+        title: "Fixed Gas Orifice"
+        unit: ""
+        facet:
+          - "pmalias"
+        plotloc: "A"
+
+  FixedGasOrifice:
+    kw: "FixedOrificeCurrent"
+    dtype: "mos"
+    spec_attr:
+      - "current"
+    spec_info: []
+    spec_ao: "TestNumber"
+    groupby: False
+    plot:
+      current:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "barplot"
+        title: "Fixed Gas Orifice"
+        unit: ""
+        facet:
+          - "pmalias"
+        plotloc: "A"
+
+  GapDriveCalibration:
+    kw: "GapDriveCalibration"
+    dtype: "mos"
+    spec_attr:
+      - "Average"
+      - "GapOffset"
+      - "PosAt3"
+      - "PosAt6"
+      - "PosAt9"
+      - "PosAt12"
+    spec_info: []
+    spec_ao: []
+    groupby: False
+
+#################
+# Flex HX+/Flex HXE  config #
+#################
+FlexHX:
+  <<: *Flex
+
+  400KHzRFLinearity:
+    kw: "^((?!.*(copy|old)).)*400KHzRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "MaxPower"
+      - "MeterReadings"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading Bias Linearity"
+        unit: "(V)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading Bias Linearity PerSetpoint"
+        unit: "(V)"
+        facet:
+        plotloc: "G"
+
+  60MHzRFLinearity:
+    kw: "^((?!.*(copy|old)).)*60MHzRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "MaxPower"
+      - "MeterReadings"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading TCP Linearity"
+        unit: "(V)"
+        facet:
+        plotloc: "A"
+
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading TCP Linearity PerSetpoint"
+        unit: "(V)"
+        facet:
+        plotloc: "G"
+
+  TESRFLinearity:
+    kw: "^((?!.*(copy|old)).)*TESRFRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "MaxPower"
+      - "MeterReadings"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+
+    plot:
+      "MeterReadings":
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading TCP Linearity"
+        unit: "(V)"
+        facet:
+        plotloc: "A"
+
+      "PerSetpoint":
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading TCP Linearity PerSetpoint"
+        unit: "(V)"
+        facet:
+        plotloc: "G"
+
+#################
+# Vantex config #
+#################
+VantexB:
+  <<: *Flex
+
+  400KHzRFLinearity:
+    kw: "^((?!.*(copy|old)).)*400KHzRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "MaxPower"
+      - "MeterReadings"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading Bias Linearity"
+        unit: "(V)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading Bias Linearity PerSetpoint"
+        unit: "(V)"
+        facet:
+        plotloc: "G"
+
+  60MHzRFLinearity:
+    kw: "^((?!.*(copy|old)).)*60MHzRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "MaxPower"
+      - "MeterReadings"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading TCP Linearity"
+        unit: "(V)"
+        facet:
+        plotloc: "A"
+
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading TCP Linearity PerSetpoint"
+        unit: "(V)"
+        facet:
+        plotloc: "G"
+
+  TESRFLinearity:
+    kw: "^((?!.*(copy|old)).)*TESRFRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "MaxPower"
+      - "MeterReadings"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+
+    plot:
+      "MeterReadings":
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading TCP Linearity"
+        unit: "(V)"
+        facet:
+        plotloc: "A"
+
+      "PerSetpoint":
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading TCP Linearity PerSetpoint"
+        unit: "(V)"
+        facet:
+        plotloc: "G"
+
+##################
+# Coronus config #
+##################
+Coronus:
+  One_PT_Cal:
+    kw: 'Calibration\d{0,1}OnePoint'
+    dtype: "mos"
+    mos_info: "OnePTCal"
+    spec_attr:
+      - "Error"
+      - "ActualFlow"
+    spec_info:
+      - "GasLine"
+      - "GasName"
+    spec_ao: "RequestedFlow"
+    groupby: False
+    plot:
+      Error:
+        sheet: "excel_doc"
+        x: "GasLine"
+        hue: "pmalias"
+        plot_funct: "barplot"
+        title: "Error One Point Calibration"
+        unit: "%"
+        facet:
+        plotloc: "A"
+
+  Ten_PT_Cal:
+    kw: '^((?!.*(copy|old)).)*Calibration\d{0,1}TenPoint'
+    dtype: "mos"
+    mos_info: "TenPTCal"
+    spec_attr:
+      - "Error"
+      - "ActualFlow"
+    spec_info:
+      - "GasLine"
+      - "GasName"
+      - "%MaxFlow"
+    spec_ao: "RequestedFlow"
+    groupby: False
+    plot:
+      Error:
+        sheet: "excel_doc"
+        x: "%MaxFlow"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error Ten Point Calibration"
+        unit: "%"
+        facet:
+          - "GasLine"
+          - "GasName"
+        plotloc: "A"
+      ActualFlow:
+        sheet: "excel_doc"
+        x: "%MaxFlow"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "ActualFlow AFV Ten Point"
+        unit: "%"
+        facet:
+          - "GasLine"
+          - "GasName"
+        plotloc: "J"
+
+  PartialPressure:
+    kw: "PartialPressure"
+    dtype: "mos"
+    spec_attr:
+      - "Pressures"
+    spec_info:
+      - "GasLine"
+      - "GasName"
+      - "%MaxFlow"
+    spec_ao: "Flows"
+    groupby: False
+
+    plot:
+      Pressures:
+        sheet: "excel_doc"
+        x: "%MaxFlow"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Max Partial Pressure"
+        unit: ""
+        facet:
+          - "GasLine"
+          - "GasName"
+        plotloc: "A"
+
+  RF_Linearity:
+    kw: "RF13MHzRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "MaxPower"
+      - "MeterReadings"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Max Meter Reading RF Linearity"
+        unit: "(V)"
+        facet:
+        plotloc: "A"
+
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Max Meter Reading RF Linearity PerSetpoint"
+        unit: "(V)"
+        facet:
+        plotloc: "G"
+
+  Valve_Conductance:
+    kw: "ValveConductance"
+    dtype: "mos"
+    spec_attr:
+      - "ConductancesAtDown"
+    spec_info: []
+    spec_ao: "Positions"
+    groupby: False
+    plot:
+      ConductancesAtDown:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Valve Conductance At Down"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+##################
+# Coronus Standard config #
+##################
+Bevel:
+  One_PT_Cal:
+    kw: 'Calibration\d{0,1}OnePoint'
+    dtype: "mos"
+    mos_info: "OnePTCal"
+    spec_attr:
+      - "Error"
+      - "ActualFlow"
+    spec_info:
+      - "GasLine"
+      - "GasName"
+    spec_ao: "RequestedFlow"
+    groupby: False
+    plot:
+      Error:
+        sheet: "excel_doc"
+        x: "GasLine"
+        hue: "pmalias"
+        plot_funct: "barplot"
+        title: "Error One Point Calibration"
+        unit: "%"
+        facet:
+        plotloc: "A"
+
+  Ten_PT_Cal:
+    kw: '^((?!.*(copy|old)).)*Calibration\d{0,1}TenPoint'
+    dtype: "mos"
+    mos_info: "TenPTCal"
+    spec_attr:
+      - "Error"
+      - "ActualFlow"
+    spec_info:
+      - "GasLine"
+      - "GasName"
+      - "%MaxFlow"
+    spec_ao: "RequestedFlow"
+    groupby: False
+    plot:
+      Error:
+        sheet: "excel_doc"
+        x: "%MaxFlow"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error Ten Point Calibration"
+        unit: "%"
+        facet:
+          - "GasLine"
+          - "GasName"
+        plotloc: "A"
+      ActualFlow:
+        sheet: "excel_doc"
+        x: "%MaxFlow"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "ActualFlow AFV Ten Point"
+        unit: "%"
+        facet:
+          - "GasLine"
+          - "GasName"
+        plotloc: "J"
+
+  PartialPressure:
+    kw: "PartialPressure"
+    dtype: "mos"
+    spec_attr:
+      - "Pressures"
+    spec_info:
+      - "GasLine"
+      - "GasName"
+      - "%MaxFlow"
+    spec_ao: "Flows"
+    groupby: False
+
+    plot:
+      Pressures:
+        sheet: "excel_doc"
+        x: "%MaxFlow"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Max Partial Pressure"
+        unit: ""
+        facet:
+          - "GasLine"
+          - "GasName"
+        plotloc: "A"
+
+  RF_Linearity:
+    kw: "RFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "MaxPower"
+      - "Rsquared"
+      - "MeterReadings"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Max Meter Reading RF Linearity"
+        unit: "(V)"
+        facet:
+        plotloc: "A"
+
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Max Meter Reading RF Linearity PerSetpoint"
+        unit: "(V)"
+        facet:
+        plotloc: "G"
+
+  Valve_Conductance:
+    kw: "ValveConductance"
+    dtype: "mos"
+    spec_attr:
+      - "ConductancesAtDown"
+    spec_info: []
+    spec_ao: "Positions"
+    groupby: False
+    plot:
+      ConductancesAtDown:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Valve Conductance At Down"
+        unit: ""
+        facet:
+        plotloc: "A"
+#################
+# Strata config #
+#################
+Strata:
+  FlowCalibration:
+    kw: "FlowCalibrationData"
+    dtype: "mos"
+    spec_attr:
+      - "CalibrationRepeatAverage"
+      - "Flow"
+      - "RoR"
+      - "CalFactor"
+      - "CalibrationActualFlow"
+      - "CalibrationRateOfRise"
+      - "CalibrationStartPressure"
+      - "CalibrationEndPressure"
+      - "CalibrationReferenceSlope"
+      - "CalibrationFactor"
+      - "CalibrationRateOfRise"
+      - "CalibrationRequestedFlow"
+      - "CalibrationTemperature"
+      - "CalibrationType"
+    spec_info:
+      - "GasLine"
+      - "GasName"
+    spec_ao: "CalibrationSetpoint"
+    groupby: False
+
+#################
+# ICS #
+#################
+ICS:
+  One_PT_Cal:
+    kw: '^((?!.*(copy|old)).)*Calibration\d{0,1}OnePoint'
+    dtype: "mos"
+    mos_info: "OnePTCal"
+    spec_attr:
+      - "Error"
+    spec_info:
+      - "GasLine"
+      - "GasName"
+    spec_ao: "RequestedFlow"
+    groupby: False
+    plot:
+      Error:
+        sheet: "excel_doc"
+        x: "GasLine"
+        hue: "pmalias"
+        plot_funct: "barplot"
+        title: "Error One Point Calibration"
+        unit: "%"
+        facet:
+        plotloc: "A"
+
+  Ten_PT_Cal:
+    kw: '^((?!.*(copy|old)).)*Calibration\d{0,1}TenPoint'
+    dtype: "mos"
+    mos_info: "TenPTCal"
+    spec_attr:
+      - "Error"
+    spec_info:
+      - "GasLine"
+      - "GasName"
+    spec_ao: "RequestedFlow"
+    groupby: False
+    plot:
+      Error:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error Ten Point Calibration"
+        unit: "%"
+        facet:
+          - "GasLine"
+          - "GasName"
+        plotloc: "A"
+
+  Valve_Conductance:
+    kw: "ValveConductance"
+    dtype: "mos"
+    spec_attr:
+      - "ConductancesAtDown"
+    spec_info:
+      - "Positions"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      ConductancesAtDown:
+        sheet: "excel_doc"
+        x: "Positions"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Valve Conductance"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+#################
+# Halo config #
+#################
+Halo:
+  FlowCalibration:
+    kw: "FlowCalibrationData"
+    dtype: "mos"
+    spec_attr:
+      - "CalibrationRepeatAverage"
+      - "Flow"
+      - "RoR"
+      - "CalFactor"
+      - "CalibrationActualFlow"
+      - "CalibrationRateOfRise"
+      - "CalibrationStartPressure"
+      - "CalibrationEndPressure"
+      - "CalibrationReferenceSlope"
+      - "CalibrationFactor"
+      - "CalibrationRateOfRise"
+      - "CalibrationRequestedFlow"
+      - "CalibrationTemperature"
+      - "CalibrationType"
+    spec_info:
+      - "GasLine"
+      - "GasName"
+    spec_ao: "CalibrationSetpoint"
+    groupby: False
+
+########################
+# Flex45 config #
+########################
+Flex45:
+  Ten_PT_Cal:
+    kw: '^((?!.*(copy|old)).)*Calibration\d{0,1}TenPoint'
+    dtype: "mos"
+    mos_info: "TenPTCal"
+    spec_attr:
+      - "Error"
+      - "ActualFlow"
+    spec_info:
+      - "GasLine"
+      - "GasName"
+      - "%MaxFlow"
+    spec_ao: "RequestedFlow"
+    groupby: False
+    plot:
+      Error:
+        sheet: "excel_doc"
+        x: "%MaxFlow"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error Ten Point Calibration"
+        unit: "%"
+        facet:
+          - "GasLine"
+          - "GasName"
+        plotloc: "A"
+      ActualFlow:
+        sheet: "excel_doc"
+        x: "%MaxFlow"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "ActualFlow AFV Ten Point"
+        unit: "%"
+        facet:
+          - "GasLine"
+          - "GasName"
+        plotloc: "J"
+
+  PartialPressure:
+    kw: "^((?!.*(copy|old)).)*PartialPressure"
+    dtype: "mos"
+    spec_attr:
+      - "Pressures"
+    spec_info:
+      - "GasLine"
+      - "GasName"
+      - "%MaxFlow"
+    spec_ao: "Flows"
+    groupby: True
+    plot:
+      Pressures:
+        sheet: "excel_doc"
+        x: "%MaxFlow"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Partial Pressure"
+        unit: ""
+        facet:
+          - "GasLine"
+          - "GasName"
+        plotloc: "A"
+
+  2MHzRFLinearity:
+    kw: "^((?!.*(copy|old)).)*2MHzRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PMReadings"
+      - "MeterReadings"
+      - "Slope"
+      - "Rsquared"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading vs Setpoints 2Mhz Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Percent Error 2MHZ Linearity PerSetpoint"
+        unit: "(%)"
+        facet:
+        plotloc: "G"
+
+  27MHzRFLinearity:
+    kw: "^((?!.*(copy|old)).)*27MHzRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PMReadings"
+      - "MeterReadings"
+      - "Slope"
+      - "Rsquared"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading vs Setpoints 27Mhz Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Percent Error 27MHZ Linearity PerSetpoint"
+        unit: "(%)"
+        facet:
+        plotloc: "G"
+
+  60MHzRFLinearity:
+    kw: "^((?!.*(copy|old)).)*60MHzRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PMReadings"
+      - "MeterReadings"
+      - "Slope"
+      - "Rsquared"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading vs Setpoints 60Mhz Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Percent Error 60MHZ Linearity PerSetpoint"
+        unit: "(%)"
+        facet:
+        plotloc: "G"
+
+  VC_At_Down:
+    kw: "^((?!.*(copy|old)).)*ValveConductance"
+    dtype: "mos"
+    spec_attr:
+      - "ConductancesAtDown"
+    spec_info:
+      Gap: "Gap2_0"
+      WaferSize: "_200MM"
+      GasName: "Ar"
+      UpperElectrode: "PreTalon"
+      MovableGapInstalled: "true"
+      ConfinementHardware: "None"
+    spec_ao: "Positions"
+    groupby: False
+    plot:
+      ConductancesAtDown:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Valve Conductance At Down"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+  VC_At_Up:
+    kw: "^((?!.*(copy|old)).)*ValveConductance"
+    dtype: "mos"
+    spec_attr:
+      - "ConductancesAtUp"
+    spec_info:
+      Gap: "Gap2_0"
+      WaferSize: "_200MM"
+      GasName: "Ar"
+      UpperElectrode: "PreTalon"
+      MovableGapInstalled: "true"
+      ConfinementHardware: "None"
+    spec_ao: "Positions"
+    groupby: False
+    plot:
+      ConductancesAtUp:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Valve Conductance At Up"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+  WAP_Conductance:
+    kw: '^((?!.*(copy|old|\w+\sWAPConductance|-522)).)*WAPConductance'
+    dtype: "mos"
+    spec_attr:
+      - "CurrentConductance.Conductances"
+    spec_info:
+      Gap: "Gap2_0"
+      GasName: "Ar"
+      ConfinementHardware: "None"
+      WaferSize: "_200MM"
+      UpperElectrode: "Talon"
+      MovableGapInstalled: "true"
+    spec_ao: "CurrentConductance.Positions"
+    groupby: False
+    plot:
+      "CurrentConductance.Conductances":
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "WAP Conductance"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+######################
+# Versys Metal config
+######################
+Metal:
+  <<: *GasDelivery
+
+####################################
+# Versys Metal45 or Metal L config #
+####################################
+
+Kiyo45_Metal:
+  <<: *GasDelivery
+
+  Bias_Linearity:
+    kw: "BiasRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "MaxPower"
+      - "MeterReadings"
+      - "PMReadings"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading Bias Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PMReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "PM Reading Bias Linearity"
+        unit: "(V)"
+        facet:
+        plotloc: "G"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error PerSetpointMeter Reading Bias Linearity"
+        unit: "(%Error)"
+        facet:
+        plotloc: "H"
+
+  TCP_Linearity:
+    kw: "TCPRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "MaxPower"
+      - "MeterReadings"
+      - "PMReadings"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading TCP Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PMReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "PM Reading TCP Linearity"
+        unit: "(V)"
+        facet:
+        plotloc: "G"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error PerSetpoint Meter Reading TCP Linearity "
+        unit: "(%Error)"
+        facet:
+        plotloc: "W"
+
+  Valve_Conductance:
+    kw: "ValveConductance"
+    dtype: "mos"
+    spec_attr:
+      - "Slope"
+      - "ConductancesAtDown"
+    spec_info:
+      - "Positions"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      ConductancesAtDown:
+        sheet: "excel_doc"
+        x: "Positions"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Valve Conductance"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+  Bias_Voltage_Probe:
+    kw: "BiasVoltageProbe"
+    dtype: "mos"
+    spec_attr:
+      - "Slope"
+      - "Rsquared"
+      - "Capacitance"
+      - "Forwards"
+      - "VProbes"
+      - "VProbeSquareds"
+    spec_info:
+      ESCSurfaceRoughness: "Smooth"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      Slope:
+        sheet: "excel_doc"
+        x: "pmalias"
+        hue: "pmalias"
+        plot_funct: "barplot"
+        title: " No Plasma Test Slope"
+        unit: " "
+        facet:
+        plotloc: "A"
+      VProbeSquareds:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Voltage Probe No Plasma Test"
+        unit: "(V^2)"
+        facet:
+        plotloc: "H"
+
+  TCP_Voltage_Probe:
+    kw: "TCPVoltageProbe"
+    dtype: "mos"
+    spec_attr:
+      - "VAvgSquared"
+      - "Rsquared"
+      - "Slope"
+      - "R1"
+      - "R2"
+      - "R3"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      VAvgSquared:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Voltage Probe No Plasma Test"
+        unit: "(Vavg^2)"
+        facet:
+        plotloc: "A"
+
+################
+# Versys Kiyo config #
+################
+Kiyo_Poly:
+  <<: *KiyoF
+
+  TCP_Linearity:
+    kw: "TCPRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "MaxPower"
+      - "MeterReadings"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading TCP Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error PerSetpoint Meter Reading TCP Linearity "
+        unit: "(%Error)"
+        facet:
+        plotloc: "H"
+
+  TCCT_NoPlasmaTest:
+    kw: "TCCTNoPlasma"
+    dtype: "mos"
+    spec_attr:
+      - "Slopes"
+      - "Rsquared"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      Slopes:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "TCCT No Plasma Test Slope"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+  Bias_Linearity:
+    kw: "BiasRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "MaxPower"
+      - "MeterReadings"
+    spec_info:
+      BiasRFPulsing: "false"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading Bias Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error PerSetpointMeter Reading Bias Linearity"
+        unit: "(%Error)"
+        facet:
+        plotloc: "H"
+
+  Bias_Voltage_Probe:
+    kw: "BiasVoltageProbe"
+    dtype: "mos"
+    spec_attr:
+      - "Slope"
+      - "Rsquared"
+      - "Capacitance"
+      - "VProbeSquareds"
+    spec_info:
+      FourZoneESCHeater: "false"
+      TunableESCInstalled: "false"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      Slope:
+        sheet: "excel_doc"
+        x: "pmalias"
+        hue: "pmalias"
+        plot_funct: "barplot"
+        title: " No Plasma Test Slope"
+        unit: " "
+        facet:
+        plotloc: "A"
+      VProbeSquareds:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Voltage Probe No Plasma Test"
+        unit: "(V^2)"
+        facet:
+        plotloc: "H"
+
+  TCP_Voltage_Probe:
+    kw: "TCPVoltageProbe"
+    dtype: "mos"
+    spec_attr:
+      - "Rsquared"
+      - "Slope"
+      - "R1"
+      - "R2"
+      - "R3"
+      - "VAvgSquared"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      Slope:
+        sheet: "excel_doc"
+        x: "pmalias"
+        hue: "pmalias"
+        plot_funct: "barplot"
+        title: " No Plasma Test Slope"
+        unit: " "
+        facet:
+        plotloc: "A"
+      VAvgSquared:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Voltage Probe No Plasma Test"
+        unit: "(Vavg^2)"
+        facet:
+        plotloc: "I"
+
+  Valve_Conductance:
+    kw: "ValveConductance"
+    dtype: "mos"
+    spec_attr:
+      - "Slope"
+      - "ConductancesAtDown"
+    spec_info:
+      - "Positions"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      ConductancesAtDown:
+        sheet: "excel_doc"
+        x: "Positions"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Valve Conductance"
+        unit: ""
+        facet:
+        plotloc: "A"
+################
+#Kiyo45 config #
+################
+Kiyo45_Poly:
+  <<: *KiyoF
+
+  TCP_Linearity:
+    kw: "TCPRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "MaxPower"
+      - "MeterReadings"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading TCP Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error PerSetpoint Meter Reading TCP Linearity "
+        unit: "(%Error)"
+        facet:
+        plotloc: "H"
+
+  TCCT_NoPlasmaTest:
+    kw: "TCCTNoPlasma"
+    dtype: "mos"
+    spec_attr:
+      - "Slopes"
+      - "Rsquared"
+    spec_info:
+      TCPWindowTempControl: "None"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      Slopes:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "TCCT No Plasma Test Slope"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+  Bias_Linearity:
+    kw: "BiasRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "MaxPower"
+      - "MeterReadings"
+    spec_info:
+      BiasRFPulsing: "false"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading Bias Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error PerSetpointMeter Reading Bias Linearity"
+        unit: "(%Error)"
+        facet:
+        plotloc: "H"
+
+  Bias_Voltage_Probe:
+    kw: "BiasVoltageProbe"
+    dtype: "mos"
+    spec_attr:
+      - "Slope"
+      - "Rsquared"
+      - "Capacitance"
+      - "VProbeSquareds"
+    spec_info:
+      ESCSurfaceRoughness: "Smooth"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      Slope:
+        sheet: "excel_doc"
+        x: "pmalias"
+        hue: "pmalias"
+        plot_funct: "barplot"
+        title: " No Plasma Test Slope"
+        unit: " "
+        facet:
+        plotloc: "A"
+      VProbeSquareds:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Voltage Probe No Plasma Test"
+        unit: "(V^2)"
+        facet:
+        plotloc: "H"
+
+####################################
+# Versys Metal45 or Metal L config  or Metal HP+#
+####################################
+Kiyo_Metal:
+  <<: *GasDelivery
+
+  Bias_Linearity:
+    kw: "BiasRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "MaxPower"
+      - "MeterReadings"
+      - "PMReadings"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading Bias Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PMReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "PM Reading Bias Linearity"
+        unit: "(V)"
+        facet:
+        plotloc: "G"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error PerSetpointMeter Reading Bias Linearity"
+        unit: "(%Error)"
+        facet:
+        plotloc: "W"
+
+  TCP_Linearity:
+    kw: "TCPRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "MaxPower"
+      - "MeterReadings"
+      - "PMReadings"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading TCP Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PMReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "PM Reading TCP Linearity"
+        unit: "(V)"
+        facet:
+        plotloc: "G"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error PerSetpoint Meter Reading TCP Linearity "
+        unit: "(%Error)"
+        facet:
+        plotloc: "W"
+
+  Valve_Conductance:
+    kw: "ValveConductance"
+    dtype: "mos"
+    spec_attr:
+      - "Slope"
+      - "ConductancesAtDown"
+    spec_info:
+      - "Positions"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      ConductancesAtDown:
+        sheet: "excel_doc"
+        x: "Positions"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Valve Conductance"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+  Bias_Voltage_Probe:
+    kw: "BiasVoltageProbe"
+    dtype: "mos"
+    spec_attr:
+      - "Slope"
+      - "Rsquared"
+      - "Capacitance"
+      - "Forwards"
+      - "VProbes"
+      - "VProbeSquareds"
+    spec_info:
+      ESCSurfaceRoughness: "Smooth"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      Slope:
+        sheet: "excel_doc"
+        x: "pmalias"
+        hue: "pmalias"
+        plot_funct: "barplot"
+        title: " No Plasma Test Slope"
+        unit: " "
+        facet:
+        plotloc: "A"
+      VProbeSquareds:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Voltage Probe No Plasma Test"
+        unit: "(V^2)"
+        facet:
+        plotloc: "H"
+
+  TCP_Voltage_Probe:
+    kw: "TCPVoltageProbe"
+    dtype: "mos"
+    spec_attr:
+      - "VAvgSquared"
+      - "Rsquared"
+      - "Slope"
+      - "R1"
+      - "R2"
+      - "R3"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      VAvgSquared:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Voltage Probe No Plasma Test"
+        unit: "(Vavg^2)"
+        facet:
+        plotloc: "A"
+
+########
+# Solo #
+########
+Solo: &SoloConfig
+  <<: *GasDelivery
+  <<: *VaccumPresControl
+  AbsoluteFlowVerifier:
+    kw: '/PM\d+.*?AbsoluteFlowVerifier'
+    dtype: "dat"
+    groupby: False
+  Bias_Linearity:
+    kw: "BiasRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "MeterReadings"
+    spec_info: {}
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading Bias Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error PerSetpointMeter Reading Bias Linearity"
+        unit: "(%Error)"
+        facet:
+        plotloc: "H"
+
+  TCP_Outer_Linearity:
+    kw: "TCPOuterRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpointDelivered"
+      - "MeterReadings"
+      - "PerSetpointMeter"
+      - "CalibratedPower"
+      - "Slope"
+    spec_info: {}
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading vs Setpoint"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      CalibratedPower:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Delivered Power vs Setpoint"
+        unit: "(W)"
+        facet:
+        plotloc: "K"
+
+  TCP_Inner_Linearity:
+    kw: "TCPInnerRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpointDelivered"
+      - "MeterReadings"
+      - "PerSetpointMeter"
+      - "CalibratedPower"
+      - "Slope"
+    spec_info: {}
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading vs Setpoint"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      CalibratedPower:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Delivered Power vs Setpoint"
+        unit: "(W)"
+        facet:
+        plotloc: "K"
+
+  Bias_Voltage_Probe:
+    kw: "BiasVoltageProbe"
+    dtype: "mos"
+    spec_attr:
+      - "cwDict.Slope"
+      - "cwDict.Rsquared"
+      - "cwDict.Capacitance"
+      - "cwDict.VProbeSquareds"
+      - "pulseDict.VProbeSquareds"
+      - "pulseDict.Slope"
+      - "pulseDict.Rsquared"
+    spec_info:
+      - "cwDict.Forwards"
+      - "pulseDict.Forwards"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      cwDict.VProbeSquareds:
+        sheet: "excel_doc"
+        x: "cwDict.Forwards"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "CW Voltage Probe No Plasma Test"
+        unit: "(V^2)"
+        facet:
+        plotloc: "A"
+
+      pulseDict.VProbeSquareds:
+        sheet: "excel_doc"
+        x: "pulseDict.Forwards"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Pulse Voltage Probe No Plasma Test"
+        unit: "(V^2)"
+        facet:
+        plotloc: "K"
+
+  TCP_Outer_VProbe:
+    kw: "TCPOuterVoltageProbe"
+    dtype: "mos"
+    spec_attr:
+      - "rSeriesDict.slope"
+      - "rSeriesDict.OutputPhase"
+      - "rSeriesDict.deliveredPower"
+    spec_info:
+      - "rSeriesDict.tuningPoint"
+    spec_ao:
+    groupby: False
+    plot:
+      rSeriesDict.OutputPhase:
+        sheet: "excel_doc"
+        x: "rSeriesDict.tuningPoint"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "PM Outer No Plasma Test"
+        unit: "(Deg)"
+        facet:
+        plotloc: "A"
+
+  TCP_Inner_VProbe:
+    kw: "TCPInnerVoltageProbe"
+    dtype: "mos"
+    spec_attr:
+      - "rSeriesDict.slope"
+      - "rSeriesDict.OutputPhase"
+      - "rSeriesDict.deliveredPower"
+    spec_info:
+      - "rSeriesDict.tuningPoint"
+    spec_ao:
+    groupby: False
+    plot:
+      rSeriesDict.OutputPhase:
+        sheet: "excel_doc"
+        x: "rSeriesDict.tuningPoint"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "PM Outer No Plasma Test"
+        unit: "(Deg)"
+        facet:
+        plotloc: "A"
+  TCP_JunctionBoxTune:
+    kw: "TCPRFJunctionBoxTune"
+    dtype: "mos"
+    spec_attr:
+      - "TCPInnerFineTuneAI"
+      - "TCPOuterFineTuneAI"
+    spec_info: {}
+    spec_ao:
+    groupby: False
+
+  AFV_Ten_PT:
+    kw: "^((?!.*(copy|old)).)*MeasurementTenPoint"
+    dtype: "mos"
+    mos_info: "TenPTCal"
+    spec_attr:
+      - "Error"
+    spec_info:
+      - "GasLine"
+      - "GasName"
+      - "%MaxFlow"
+    spec_ao: "TenPointOrificeCalSetpoint"
+    groupby: True
+    plot:
+      Error:
+        sheet: "excel_doc"
+        x: "%MaxFlow"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error AFV Ten Point"
+        unit: "%"
+        facet:
+          - "GasLine"
+          - "GasName"
+        plotloc: "A"
+
+#################
+# Microwave2_Strip #
+#################
+Microwave2_Strip:
+  Ten_PT_Cal:
+    kw: '^((?!.*(copy|old)).)*(Gas[1-3]{1})Calibration\d{0,1}TenPoint'
+    dtype: "mos"
+    mos_info: "TenPTCal"
+    spec_attr:
+      - "Error"
+      - "ActualFlow"
+    spec_info:
+      - "GasLine"
+      - "GasName"
+    spec_ao: "RequestedFlow"
+    groupby: False
+    plot:
+      Error:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error Ten Point Calibration"
+        unit: "%"
+        facet:
+          - "GasLine"
+          - "GasName"
+        plotloc: "A"
+
+  VoDMPartialPressure:
+    kw: "^((?!.*(copy|old)).)*VoDMPartialPressure"
+    dtype: "mos"
+    spec_attr:
+      - "state"
+      - "percentError"
+      - "vodmGasPressure"
+      - "vodmExpectedPressure"
+    spec_info:
+      - "GasLine"
+      - "GasName"
+    spec_ao: "Flows"
+    groupby: False
+
+  PartialPressure:
+    kw: "(Gas[1-3]{1})PartialPressure"
+    dtype: "mos"
+    spec_attr:
+      - "Pressures"
+    spec_info:
+      - "GasLine"
+      - "GasName"
+      - "%MaxFlow"
+    spec_ao: "Flows"
+    groupby: False
+
+    plot:
+      Pressures:
+        sheet: "excel_doc"
+        x: "%MaxFlow"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Partial Pressure"
+        unit: ""
+        facet:
+          - "GasLine"
+          - "GasName"
+        plotloc: "A"
+
+####################################
+# Metal M config #
+####################################
+MetalM:
+  <<: *GasDelivery
+
+  Bias_Linearity:
+    kw: "BiasRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "MaxPower"
+      - "MeterReadings"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading Bias Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error PerSetpointMeter Reading Bias Linearity"
+        unit: "(%Error)"
+        facet:
+        plotloc: "H"
+
+  TCP_Linearity:
+    kw: "TCPRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "MaxPower"
+      - "MeterReadings"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading TCP Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error PerSetpoint Meter Reading TCP Linearity "
+        unit: "(%Error)"
+        facet:
+        plotloc: "H"
+
+  Valve_Conductance:
+    kw: "ValveConductance"
+    dtype: "mos"
+    spec_attr:
+      - "Slope"
+      - "ConductancesAtDown"
+    spec_info:
+      - "Positions"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      ConductancesAtDown:
+        sheet: "excel_doc"
+        x: "Positions"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Valve Conductance"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+  Bias_Voltage_Probe:
+    kw: "BiasVoltageProbe"
+    dtype: "mos"
+    spec_attr:
+      - "Slope"
+      - "Rsquared"
+      - "VProbeSquareds"
+    spec_info:
+      ESCSurfaceRoughness: "Smooth"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      Slope:
+        sheet: "excel_doc"
+        x: "pmalias"
+        hue: "pmalias"
+        plot_funct: "barplot"
+        title: " No Plasma Test Slope"
+        unit: " "
+        facet:
+        plotloc: "A"
+      VProbeSquareds:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Voltage Probe No Plasma Test"
+        unit: "(V^2)"
+        facet:
+        plotloc: "H"
+
+####################################
+# Metal NXP config #
+####################################
+MetalNXP:
+  <<: *GasDelivery
+
+  Bias_Linearity:
+    kw: "BiasRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "MaxPower"
+      - "MeterReadings"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading Bias Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error PerSetpointMeter Reading Bias Linearity"
+        unit: "(%Error)"
+        facet:
+        plotloc: "H"
+
+  TCP_Linearity:
+    kw: "TCPRFLinearity"
+    dtype: "mos"
+    spec_attr:
+      - "PerSetpoint"
+      - "MaxPower"
+      - "MeterReadings"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      MeterReadings:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Meter Reading TCP Linearity"
+        unit: "(W)"
+        facet:
+        plotloc: "A"
+      PerSetpoint:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Error PerSetpoint Meter Reading TCP Linearity "
+        unit: "(%Error)"
+        facet:
+        plotloc: "H"
+
+  Valve_Conductance:
+    kw: "ValveConductance"
+    dtype: "mos"
+    spec_attr:
+      - "Slope"
+      - "ConductancesAtDown"
+    spec_info:
+      - "Positions"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      ConductancesAtDown:
+        sheet: "excel_doc"
+        x: "Positions"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Valve Conductance"
+        unit: ""
+        facet:
+        plotloc: "A"
+
+  Bias_Voltage_Probe:
+    kw: "BiasVoltageProbe"
+    dtype: "mos"
+    spec_attr:
+      - "Slope"
+      - "Rsquared"
+      - "VProbeSquareds"
+    spec_info:
+      ESCSurfaceRoughness: "Smooth"
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      Slope:
+        sheet: "excel_doc"
+        x: "pmalias"
+        hue: "pmalias"
+        plot_funct: "barplot"
+        title: " No Plasma Test Slope"
+        unit: " "
+        facet:
+        plotloc: "A"
+      VProbeSquareds:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "Voltage Probe No Plasma Test"
+        unit: "(V^2)"
+        facet:
+        plotloc: "H"
+
+  TCCT_NoPlasmaTest:
+    kw: "TCCTNoPlasma"
+    dtype: "mos"
+    spec_attr:
+      - "Slopes"
+      - "Rsquared"
+    spec_info: []
+    spec_ao: "Setpoints"
+    groupby: False
+    plot:
+      Slopes:
+        sheet: "excel_doc"
+        x: "Setpoints"
+        hue: "pmalias"
+        plot_funct: "lineplot"
+        title: "TCCT No Plasma Test Slope"
+        unit: ""
+        facet:
+        plotloc: "A"

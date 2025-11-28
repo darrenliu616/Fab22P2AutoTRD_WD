@@ -1,0 +1,6499 @@
+##########
+# config #
+##########
+
+GenericModule: &GenericModule
+  ZTM1_TM_KiyoFXE_3PM_15ProcessGas_2TG_DGF_Facility_GasLine_LBR_Check_:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "LeakRate"
+      step_label:
+    groupby: False
+  ZTM22_VTM_AL_PressureCheck:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Press"
+      step_label:
+      resource:
+    groupby: False
+  ZTM22_VTM_AL_760Torr:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "PressureReading"
+      step_label:
+      resource:
+    groupby: False
+  ZTM23_VTM_AL_90mTorr:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "PressureReading"
+      step_label:
+      resource:
+    groupby: False
+  ZTM23_VTM_AL_40mt:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Press"
+      step_label:
+      resource:
+    groupby: False
+  ZTM24_VTM_AL_BasePressure:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "PressureReading"
+      step_label:
+      resource:
+    groupby: False
+  ZTM24_VTM_AL_BasePressure_solo:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Press"
+      step_label:
+      resource:
+    groupby: False
+  ZTM25_VTM_AL_LeakRate:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "LeakRate"
+      step_label:
+      resource:
+    groupby: False
+  ZTM26_VTM_AL_PumpPumpingSpeed:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZTM27_AL_Pump_Vent_ElaspeTime:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ElapsedTime"
+      step_label:
+      resource:
+    groupby: False
+  ZTM28_VTM_AL_PumpPumpingSpeedGL:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZTM43_ESC60CDualChillerTemp20C_30CRampUpDownStabilityTime4PMs:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZTM50_FoupLoadUnload30CyclesWithoutAlarm:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZTM51_TMIronmanWaferTransferStability25Slot20Cycles:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZTM58_AirlockWaferTransferDACheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZTM59_TMandChamberPressureDiffWhenSlotDoorOpen:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZTM60_AirlockPressureDiffWhenDoorOpen:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZTM68_VTM_AL_50mTorr:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "PressureReading"
+      step_label:
+      resource:
+    groupby: False
+  ZTM69_FoupLoadUnload30CyclesWithoutAlarm:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZTM78_TM_N2_PressureCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZTM82_VTM_AL_40mTorr:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "PressureReading"
+      step_label:
+      resource:
+    groupby: False
+  ZTM87_AL_Pump_Vent_ElaspeTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZTM88_ATM_EFEM_FI_SettingCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZTM89_Tool_install_check_List:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZTM90_AL_Pump_Vent_ElaspeTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZTM91_WaferTransferStabilityMorethan2000pcs:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZTM101_TMIronmanWaferTransferStability25Slot20CyclesNoAlarm: #2025/11 Darren for NXP 1P1E,reference ZTM51
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZTM129_FelxFL_15Process_2TG_DGF_MixSTG_MFCTranducerPressureCatch:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Pressure"
+      step_no:
+    groupby: False
+  ZTM130_FelxFL_15Process_2TG2DGF_MSTGI8ALD_MFCTranducerPressureCatch:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Pressure"
+      step_no:
+    groupby: False
+  ZTM140_Felx45_Gas2_C4F8_MFCTranducerPressureCatch:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Pressure"
+      step_no:
+    groupby: False
+  ZTM157_WaferTransferStabilityMorethan1000pcs:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  ZTM329_FelxFL_15Process_2TG_DGF_MixSTG_MFCTranducerPressureCatch:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Pressure"
+      step_no:
+    groupby: False
+
+  ZTM505_Foup_LoadUnload_test:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  ZTM506_WaferTransferStabilityMorethan200pcs:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZTM507_BulkGasCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  ZTM517_CheckVacuum:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZTM518_208LineVoltage:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZTM522_LoadUnloadTest:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZTM523_VTMPumpDownTest:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZTM539_FoupLoadUnload100CyclesWithoutAlarm:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZTM540_TMBulkGas:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZTM541_FFUSpeed:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZTM542_ATMIronMan:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Solo_TM_N2_CDA:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Solo_TM_AL_leak:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Solo_TM_AL_PumpVent:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Solo_TM_AL_PressureDelta:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZTM_N2_22_VTMAL1to4_760Torr:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "PressureReading"
+      step_label:
+      resource:
+    groupby: False
+  ZTM_N2_23_VTM_AL1to4_90mTorr:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "PressureReading"
+      step_label:
+      resource:
+    groupby: False
+  ZTM_N2_24_VTM_AL1to4_BasePressure:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "PressureReading"
+      step_label:
+      resource:
+    groupby: False
+  ZTM_N2_25_VTM_AL1to4_LeakRate:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ChamberLeakRate"
+      step_label:
+      resource:
+    groupby: False
+  ZTM_N2_27_FEOL_AL_Pump_Vent_ElaspeTime:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ElapsedTime"
+      step_label:
+      resource:
+    groupby: False
+  ZTM_N2_58_AirlockWaferTransferDACheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZTM_N2_59_TMand_4_ChamberPressureDiffWhenSlotDoorOpen:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+KiyoF: &KiyoF
+  Z3_KiyoFXE_15Process_2TG_DGF_MFC_Leakby: # FOEL OD4;  MEOL HMO
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Pressure"
+      step_no:
+    groupby: False
+
+  Z3_KiyoFXE_MFC_Leakby_17Process1HeTGDGFMSTGI: # MEOL CMG-ME
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Pressure"
+      step_no:
+    groupby: False
+
+  Z4_PinLifterHeightMeasure:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z6_ESCHeaterResistanceCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z5_LiftPin_UpDown_ElaspeTime:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "WaferLifterMotionElapsedTime"
+    groupby: False
+  Z7_LTC_208V_LineVoltage:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "LTC_208V_LineVoltageMonitor"
+      step_label:
+    groupby: False
+
+  Z8_TCR_TCW_HeaterResistanceCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z9_ChamberDryPumpPumpingSpeed:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z10_GasLine_Heater_Temp_Monitor:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "GasLineHeater1Temperature_AI"
+    groupby: False
+  Z11_ChamberWall_Temp_60C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TemperatureMonitor_AI"
+      step_label:
+    groupby: False
+  Z12_ChamberLeakRate:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "LeakbackRate"
+    groupby: False
+
+  Z13_CM1ProcessManometerZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometer"
+    groupby: False
+  Z14_CM2ChamberManometerZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ChamberManometer"
+    groupby: False
+  Z15_CM3ForelineManometerZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ForelineManometer_RawAI"
+    groupby: False
+  Z16_CM1ChamberBasePressurePumpDonw600sec:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometerAdjustedPressure"
+    groupby: False
+  Z17_MFCZeroFlowOffset_15ProcessGas_2STG:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Flow_AI"
+    groupby: False
+  Z18_TCCTCapacitanceMeasureData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z19_BiasMatchCapacitanceMeasureData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z20_ESCCapacitanceMeasureData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z21_TCP_TCR_Temperature120C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "AI"
+      step_label:
+    groupby: False
+  Z27_ESCHeaterOff_SetTCUTemp15C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TCUCh1TempMonitor_AI"
+    groupby: False
+  Z28_ESCHeaterOff_SetTCUTemp30C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TCUCh1TempMonitor_AI"
+    groupby: False
+  Z30_OnWaferDuty40C_50C_60C_70CMeanRangeData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z31_OnWaferESCHeaterOnOff_HydraOnOff_TCU20C:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z32_ESCHeaterOff_TCUT20C_DetalOf_ESCTemperatureMonitorAndTCUTempMonitor:
+    dtype: "xml"
+    spec_attr:
+      - "result"
+    spec_ao:
+    spec_info:
+      step_no:
+      result_variable_name:
+    groupby: False
+  Z33_TCU20C_ESC60C_TempAndOutputValue:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ESCTemperature"
+      step_label:
+    groupby: False
+  Z35_ESCHeaterOff_SetTCUTemp20C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TCUCh1TempMonitor_AI"
+    groupby: False
+  Z37_VCIZeroingValue:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "VCIZeroingValue"
+    groupby: False
+  Z42_ESCAndFacilityPlateScrewTorqueForceCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z46_SnapShot_OES_IntensityVerify:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z61_GasInjectorFunctional4PeaksCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z63_ESCHeaterOff_SetTCUTemp20C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TCUCh1TempMonitor_AI"
+    groupby: False
+
+  Z64_ChamberWaferTransferDACheckAfterSeason:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z66_MFCZeroFlowOffset_17ProcessGas_1BallastTuning:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Flow_AI"
+    groupby: False
+  Z67_ESCHeaterOff_SetTCUTemp70C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TCUCh1TempMonitor_AI"
+    groupby: False
+  Z76_ChillerTestandAdjustedTCUBypassValve:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Monitor_AI"
+    groupby: False
+  Z190_ESC_CoolantFlow_AI:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ESCCoolantFlow"
+      step_label:
+    groupby: False
+
+  ZSR159_StripAllMFCFlowServoStableTimeat10_50_90_50_10ofFullScale:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z_N2_1_ESC_Chucking_voltage:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z_N2_3_Chiller_coolant_flow:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Flow_AI"
+    groupby: False
+  Z_N2_5_TCP_TCR_drywell_cal:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z_N2_6_Throttle_Leakby_Check:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "PMPressureDelta"
+    groupby: False
+  Z_N2_7_BiseHe_loop_check:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z_N2_9_SetTCUTemp20C&70C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Monitor_AI"
+    groupby: False
+
+  Z168_GasOnePointCal_Gas8O2_5and95Percentage:
+    dtype: "xml"
+    spec_attr:
+      - "percent_error"
+      - "flow_actual"
+      - "flow_requested"
+    spec_ao:
+    spec_info:
+      step_title:
+      gas_line_no:
+      gas_name:
+    groupby: False
+
+  Z169_GasOnePointCal_Gas6_95Percentage:
+    dtype: "xml"
+    spec_attr:
+      - "percent_error"
+      - "flow_requested"
+      - "flow_actual"
+    spec_ao:
+    spec_info:
+      step_title:
+      gas_line_no:
+      gas_name:
+    groupby: False
+  Z172_DualChiller_20Cto30C_RampUpDown:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TCUCH1Ramp"
+    groupby: False
+  Z181_KiyoFX_Gas7_Gas8_Gas10_GasOnePointCal:
+    dtype: "xml"
+    spec_attr:
+      - "percent_error"
+      - "flow_actual"
+      - "flow_requested"
+    spec_ao:
+    spec_info:
+      step_title:
+      gas_line_no:
+      gas_name:
+    groupby: False
+  Z206_VCIZeroingValue:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z519_SystemDCVoltage:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z520_GFIFunction:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z521_DAOptimization:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z524_FirmwareCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z525_AirAmplifier:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z526_TCW_TCR_TempCalibration:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z527_TMP_PressureCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z528_ExhaustFlow:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z529_WaferCentering:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z530_TopChamberTempControl:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z531_PumpPurgeTest:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z532_ChamberCapacitor:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z533_ChillerFlowAlign:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Flow"
+    groupby: False
+
+  # Z533_ChillerFlowAlign:
+  #   dtype: 'xml'
+  #   spec_attr:
+  #     - 'comments'
+  #   spec_ao:
+  #   spec_info:
+  #     step_no:
+  #     step:
+  #     description:
+  #   groupby: False
+
+  Z534_BacksideHELeak:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z535_HeliumUPC:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z536_BiasNoPlasma:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z537_HeliumCooling:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z538_N2Ballast:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z545_ChamberRecoverySeason12:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z546_ChamberRecoverySeason100:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z547_LTCFirmware:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  ZR44_AllMFCFlowServoStableTimeat10_50_90_50_10ofFullScale:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  ZR45_SeasonDataCheckProcessPressureServoStableTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR47_RunWACtoCheck_4ZoneESCHeaterOutputValueDutyCycleAtTemp60C:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR48_CheckESCOpticalProbeFirstPeakandSecondPeak:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR49_TCP_RFRampUpDownStableTimeRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR52_Bias_RFRampUpDownStableTimeRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR53_TCPBiasRFMatcingServoStableTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR54_DCBiasVoltageServoControlStableTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR55_ESCdechuckingVoltageDropTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR56_BiasPulsing35Vand700VRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR57_DCBiasVoltageDeviationControlCapability:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR60_BackHe_Flow_PressureServoRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR115_ESC_Chucking_DechuckingVoltageServoTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+KiyoC: &KiyoC
+  Z3_Kyio_CX_16MFC_Leakby_Develop:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Pressure"
+      step_no:
+    groupby: False
+  Z4_PinLifterHeightMeasure:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z6_ESCHeaterResistanceCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z7_LTC_208V_LineVoltage:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "LTC_208V_LineVoltageMonitor"
+      step_label:
+    groupby: False
+
+  Z8_TCR_TCW_HeaterResistanceCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z9_ChamberDryPumpPumpingSpeed:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z10_GasLine_Heater_Temp_Monitor:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "GasLineHeater1Temperature_AI"
+    groupby: False
+  Z11_ChamberWall_Temp_60C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TemperatureMonitor_AI"
+      step_label:
+    groupby: False
+  Z12_ChamberLeakRate:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "LeakbackRate"
+    groupby: False
+
+  Z13_CM1ProcessManometerZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometer"
+    groupby: False
+  Z14_CM2ChamberManometerZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ChamberManometer"
+    groupby: False
+  Z15_CM3ForelineManometerZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ForelineManometer_RawAI"
+    groupby: False
+  Z16_CM1ChamberBasePressurePumpDonw600sec:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometerAdjustedPressure"
+    groupby: False
+  Z18_TCCTCapacitanceMeasureData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z19_BiasMatchCapacitanceMeasureData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z20_ESCCapacitanceMeasureData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z21_TCP_TCR_Temperature120C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "AI"
+      step_label:
+    groupby: False
+  Z28_ESCHeaterOff_SetTCUTemp30C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TCUMonitor_AI"
+    groupby: False
+  Z30_OnWaferDuty40C_50C_60C_70CMeanRangeData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z32_ESCHeaterOff_TCUT20C_DetalOf_ESCTemperatureMonitorAndTCUTempMonitor:
+    dtype: "xml"
+    spec_attr:
+      - "result"
+    spec_ao:
+    spec_info:
+      step_no:
+      result_variable_name:
+    groupby: False
+
+  Z37_VCIZeroingValue:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "VCIZeroingValue"
+    groupby: False
+  Z40_GasBoxPumpPurge120_16Process:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "GasPumpPurgeCycle"
+    groupby: False
+  Z42_ESCAndFacilityPlateScrewTorqueForceCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z61_GasInjectorFunctional4PeaksCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z62_SnapShot_OES_IntensityVerify_388nm:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z63_ESCHeaterOff_SetTCUTemp20C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TCUMonitor_AI"
+    groupby: False
+  Z71_MFCZeroFlowOffset_16ProcessGas:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Flow_AI"
+    groupby: False
+  Z_N2_1_ESC_Chucking_voltage:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z_N2_3_Chiller_coolant_flow:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Flow_AI"
+    groupby: False
+  Z_N2_4_ESC_chucking_voltage_ramp_up_time:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z_N2_5_TCW_TCR_drywell_cal:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z_N2_6_Throttle_Leakby_Check:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "PMPressureDelta"
+    groupby: False
+  Z_N2_7_BiseHe_loop_check:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR44_AllMFCFlowServoStableTimeat10_50_90_50_10ofFullScale:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR45_SeasonDataCheckProcessPressureServoStableTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR47_RunWACtoCheck_4ZoneESCHeaterOutputValueDutyCycleAtTemp60C:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR48_CheckESCOpticalProbeFirstPeakandSecondPeak:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR49_TCP_RFRampUpDownStableTimeRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR52_Bias_RFRampUpDownStableTimeRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR53_TCPBiasRFMatcingServoStableTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR54_DCBiasVoltageServoControlStableTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR55_ESCdechuckingVoltageDropTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR57_DCBiasVoltageDeviationControlCapability:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR60_BackHe_Flow_PressureServoRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+KiyoE: &KiyoE
+  Z3_KiyoEXP_MFC_Leakby_16Process1STG1HeTG:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Pressure"
+      step_no:
+    groupby: False
+  Z4_PinLifterHeightMeasure:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z6_ESCHeaterResistanceCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z7_LTC_208V_LineVoltage:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "LTC_208V_LineVoltageMonitor"
+      step_label:
+    groupby: False
+
+  Z8_TCR_TCW_HeaterResistanceCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z9_ChamberDryPumpPumpingSpeed:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z10_GasLine_Heater_Temp_Monitor:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "GasLineHeater1Temperature_AI"
+    groupby: False
+  Z11_ChamberWall_Temp_60C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TemperatureMonitor_AI"
+      step_label:
+    groupby: False
+  Z12_ChamberLeakRate:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "LeakbackRate"
+    groupby: False
+
+  Z13_CM1ProcessManometerZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometer"
+    groupby: False
+  Z14_CM2ChamberManometerZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ChamberManometer"
+    groupby: False
+  Z15_CM3ForelineManometerZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ForelineManometer_RawAI"
+    groupby: False
+  Z16_CM1ChamberBasePressurePumpDonw600sec:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometerAdjustedPressure"
+    groupby: False
+  Z18_TCCTCapacitanceMeasureData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z19_BiasMatchCapacitanceMeasureData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z20_ESCCapacitanceMeasureData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z21_TCP_TCR_Temperature120C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TemperatureMonitor_AI"
+      step_label:
+    groupby: False
+  Z28_ESCHeaterOff_SetTCUTemp30C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Monitor_AI"
+    groupby: False
+  Z30_OnWaferDuty40C_50C_60C_70CMeanRangeData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z31_OnWaferESCHeaterOnOff_HydraOnOff_TCU20C:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z32_ESCHeaterOff_TCUT20C_DetalOf_ESCTemperatureMonitorAndTCUTempMonitor:
+    dtype: "xml"
+    spec_attr:
+      - "result"
+    spec_ao:
+    spec_info:
+      step_no:
+      result_variable_name:
+    groupby: False
+  Z33_TCU20C_ESC60C_TempAndOutputValue:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ESCTemperature"
+      step_label:
+    groupby: False
+  Z34_GasBoxPumpPurge120_16Process_TuningGas1_TuingBallast:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "GasPumpPurgeCycle"
+    groupby: False
+  Z35_ESCHeaterOff_SetTCUTemp20C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Monitor_AI"
+    groupby: False
+  Z37_VCIZeroingValue:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "VCIZeroingValue"
+    groupby: False
+  Z38_LiftPin_UpDown_ElaspeTime:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "WaferLifterMotionElapsedTime"
+    groupby: False
+  Z39_MFCZeroFlowOffset_16ProcessGas-1STG_1BallastTuning:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Flow_AI"
+    groupby: False
+  Z42_ESCAndFacilityPlateScrewTorqueForceCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z61_GasInjectorFunctional4PeaksCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z62_SnapShot_OES_IntensityVerify_388nm:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z64_ChamberWaferTransferDACheckAfterSeason:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z171_SingleDualChiller_15Cto35C_RampUpDown:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TimeDelta"
+    groupby: False
+  Z_N2_1_ESC_Chucking_voltage:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z_N2_3_Chiller_coolant_flow:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Flow_AI"
+    groupby: False
+
+  Z_N2_4_ESC_chucking_voltage_ramp_up_time:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z_N2_5_TCP_TCR_drywell_cal:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z_N2_6_Throttle_Leakby_Check:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "PMPressureDelta"
+    groupby: False
+
+  Z_N2_7_BiseHe_loop_check:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z_N2_8_Hydra_Coefficient_Check:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  ZR44_AllMFCFlowServoStableTimeat10_50_90_50_10ofFullScale:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR45_SeasonDataCheckProcessPressureServoStableTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR47_RunWACtoCheck_4ZoneESCHeaterOutputValueDutyCycleAtTemp60C:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR48_CheckESCOpticalProbeFirstPeakandSecondPeak:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR49_TCP_RFRampUpDownStableTimeRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR52_Bias_RFRampUpDownStableTimeRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR53_TCPBiasRFMatcingServoStableTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR54_DCBiasVoltageServoControlStableTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR55_ESCdechuckingVoltageDropTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR57_DCBiasVoltageDeviationControlCapability:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR60_BackHe_Flow_PressureServoRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+##################
+# Metal NXP config #
+##################
+MetalNXP: &MetalNXP
+  Z3_Metal_NXP_16MFC_Leakby_Develop:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Pressure"
+      step_no:
+    groupby: False
+  Z4_PinLifterHeightMeasure:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z6_ESCHeaterResistanceCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z7_LTC_208V_LineVoltage:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "LTC_208V_LineVoltageMonitor"
+      step_label:
+    groupby: False
+  Z9_ChamberDryPumpPumpingSpeed:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z10_GasLine_Heater_Temp_Monitor:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Temperature_AI"
+    groupby: False
+  Z11_ChamberWall_Temp_60C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TemperatureMonitor_AI"
+      step_label:
+    groupby: False
+  Z12_ChamberLeakRate:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "LeakbackRate"
+    groupby: False
+  Z13_CM1ProcessManometerZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometer"
+    groupby: False
+  Z14_CM2ChamberManometerZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ChamberManometer"
+    groupby: False
+  Z15_CM3ForelineManometerZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ForelineManometer_RawAI"
+    groupby: False
+  Z16_CM1ChamberBasePressurePumpDonw600sec:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometerAdjustedPressure"
+    groupby: False
+  Z18_TCCTCapacitanceMeasureData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z21_TCP_TCR_Temperature120C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TemperatureMonitor_AI"
+      step_label:
+    groupby: False
+  Z30_OnWaferDuty40C_50C_60C_70CMeanRangeData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z37_VCIZeroingValue:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "VCIZeroingValue"
+    groupby: False
+  Z42_ESCAndFacilityPlateScrewTorqueForceCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z61_GasInjectorFunctional4PeaksCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z64_ChamberWaferTransferDACheckAfterSeason:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z70_SnapShot_OES_IntensityVerify_388nm:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z71_MFCZeroFlowOffset_16ProcessGas:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Flow_AI"
+    groupby: False
+  Z72_AATCW_CDA_Pressure_SettingCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z74_ProcessKitRFHoursLifeTimeCountNXP:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z75_ESCHeaterOff_SetTCUTemp0C_Check4ZoneESCTemp:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ESCTemperature_AI"
+      step_label:
+    groupby: False
+  Z76_ChillerTestandAdjustedTCUBypassValve:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Monitor_AI"
+    groupby: False
+  Z77_Onwafer_HydraESC_5C_TemperatureVerify:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z80_ChamberFacilityExhaustPressureCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z81_TCCT_O2_TuningRangeTest_C4C5_Position:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z83_Onwafer_HydraESC_5C_TCU20C_TemperatureVerify:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z84_OnWaferDuty40C_50C_60C_70CMean3SigmaData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z86_CheckESC_40COutputValue_whenCollectOnwaferDytuCycle:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z89_OnWaferHydraOnOff_TCU20C_MeanRange3Sigma:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z102_MetalNXP_N2_AllGasCalOnePoint_3Percentage_95Percentage: #2025/11 Darren for 1P1E
+    dtype: "xml"
+    spec_attr:
+      - "percent_error"
+      - "flow_requested"
+      - "flow_actual"
+    spec_ao:
+    spec_info:
+      step_title:
+      gas_line_no:
+      gas_name:
+    groupby: False
+  Z109_MetalMXP_N2_ChamberGasLineLeakRate:  #2025/11 Darren for NXP 1P1E
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z173_ESC45C_DualChiller_N5CtoP5C_RampUpDown:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TimeDelta"
+    groupby: False
+  Z191_Chamber_LeakRate:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR45_SeasonDataCheckProcessPressureServoStableTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR48_CheckESCOpticalProbeFirstPeakandSecondPeak:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR49_TCP_RFRampUpDownStableTimeRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR52_Bias_RFRampUpDownStableTimeRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR53_TCPBiasRFMatcingServoStableTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR54_DCBiasVoltageServoControlStableTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR55_ESCdechuckingVoltageDropTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR57_DCBiasVoltageDeviationControlCapability:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR60_BackHe_Flow_PressureServoRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR73_ARIA_Functionality_Check:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR87_AllMFCFlowServoStableTimeat10_50_90_50_10ofFullScale:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR90_SeasonDataCheckProcessPressureServoStableTimeAtStep1ProcessTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z528_ExhaustFlow:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z529_WaferCentering:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z540_HeliumSupplyPressure:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z541_TCPRFLineLoss:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z542_BiasRFLineLoss:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z543_BiasPulseTest:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z544_ElectrodeHousingTemp:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+##################
+# Kiyo GX config #
+##################
+KiyoG: &KiyoG
+  Z1_Kyio_GX_17Process_GasBox_LeakBackRate_Develop:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "LR"
+      step_no:
+    groupby: False
+
+  Z4_PinLifterHeightMeasure:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z5_LiftPin_UpDown_ElaspeTime:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "WaferLifterMotionElapsedTime"
+    groupby: False
+
+  Z8_TCR_TCW_HeaterResistanceCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z9_ChamberDryPumpPumpingSpeed:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z10_GasLine_Heater_Temp_Monitor:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Temperature_AI"
+    groupby: False
+  Z11_ChamberWall_Temp_60C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TemperatureMonitor_AI"
+      step_label:
+    groupby: False
+  Z12_ChamberLeakRate:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "LeakbackRate"
+    groupby: False
+
+  Z13_CM1ProcessManometerZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometer"
+    groupby: False
+  Z14_CM2ChamberManometerZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ChamberManometer"
+    groupby: False
+  Z15_CM3ForelineManometerZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Manometer"
+    groupby: False
+  Z16_CM1ChamberBasePressurePumpDonw600sec:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometerAdjustedPressure"
+    groupby: False
+  Z17_MFCZeroFlowOffset_17ProcessGas_1STG:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Flow_AI"
+    groupby: False
+  Z20_ESCCapacitanceMeasureData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z21_TCP_TCR_Temperature120C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "AI"
+      step_label:
+    groupby: False
+  Z27_ESCHeaterOff_SetTCUTemp15C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TCUCh1TempMonitor_AI"
+    groupby: False
+  Z28_ESCHeaterOff_SetTCUTemp30C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TCUCh1TempMonitor_AI"
+    groupby: False
+  Z32_ESCHeaterOff_TCUT20C_DetalOf_ESCTemperatureMonitorAndTCUTempMonitor:
+    dtype: "xml"
+    spec_attr:
+      - "result"
+    spec_ao:
+    spec_info:
+      step_no:
+      result_variable_name:
+    groupby: False
+  Z42_ESCAndFacilityPlateScrewTorqueForceCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z46_SnapShot_OES_IntensityVerify:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z61_GasInjectorFunctional4PeaksCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z64_ChamberWaferTransferDACheckAfterSeason:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z190_ESC_CoolantFlow_AI:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ESCCoolantFlow"
+      step_label:
+    groupby: False
+
+  Z521_DAOptimization:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z526_TCW_TCR_TempCalibration:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z527_TMP_PressureCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z529_WaferCentering:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z531_PumpPurgeTest:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z532_ChamberCapacitor_KiyoGX:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z533_ChillerFlowAlign:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Flow"
+    groupby: False
+
+  Z534_BacksideHELeak:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z538_N2Ballast:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z545_ChamberRecoverySeason12:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z546_ChamberRecoverySeason100:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z550_AirAmplifier:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z551_ExhaustFlow:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z552_OnWaferDuty60C_MeanRangeData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z553_SystemDCVoltage_GX:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z554_DASensorCal:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z555_FirmwareCheck_GX:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z556_TopChamberTempControl_GX:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Heater"
+      step_label:
+    groupby: False
+
+  Z557_HeliumCooling_GX:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z558_GaslineLeak:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z559_HeliumRegulator:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z560_GasBoxN2Purge:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z561_MFCZeroFlowOffset_17ProcessGas_1Ballast:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Flow_AI"
+    groupby: False
+
+  Z562_HydraBaseline:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z571_LTC_208V_LineVoltage:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z_N2_10_GX_ Difference between V probe & V probe_monitor:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z_N2_11_GX_TCP Bias reflect power check:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z_N2_12_FEOL_TCW_CDA pressure gaugeCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z_N2_13_OnWaferDuty40C_50C_60C_70_80_90_100CMeanRangeData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z_N2_14_MonitorTCUTemp20_70C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TempMonitor_AI"
+    groupby: False
+  ZR44_AllMFCFlowServoStableTimeat10_50_90_50_10ofFullScale:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR45_SeasonDataCheckProcessPressureServoStableTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR47_RunWACtoCheck_4ZoneESCHeaterOutputValueDutyCycleAtTemp60C:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR48_CheckESCOpticalProbeFirstPeakandSecondPeak:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR49_TCP_RFRampUpDownStableTimeRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR52_Bias_RFRampUpDownStableTimeRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR53_TCPBiasRFMatcingServoStableTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR54_DCBiasVoltageServoControlStableTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR55_ESCdechuckingVoltageDropTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR60_BackHe_Flow_PressureServoRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+##################
+# Metal M config #
+##################
+MetalM:
+  Z3_Metal_NXP_16MFC_Leakby_Develop:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Pressure"
+      step_no:
+    groupby: False
+
+  Z4_PinLifterHeightMeasure:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z6_ESCHeaterResistanceCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step:
+      step_no:
+      description:
+    groupby: False
+  Z7_LTC_208V_LineVoltage:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "LTC_208V_LineVoltageMonitor"
+      step_label:
+    groupby: False
+  Z9_ChamberDryPumpPumpingSpeed:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z10_GasLine_Heater_Temp_Monitor:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Temperature_AI"
+    groupby: False
+  Z11_ChamberWall_Temp_60C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TemperatureMonitor_AI"
+      step_label:
+    groupby: False
+  Z12_ChamberLeakRate:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "LeakbackRate"
+    groupby: False
+
+  Z13_CM1ProcessManometerZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometer"
+    groupby: False
+  Z14_CM2ChamberManometerZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ChamberManometer"
+    groupby: False
+  Z15_CM3ForelineManometerZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ForelineManometer_RawAI"
+    groupby: False
+  Z16_CM1ChamberBasePressurePumpDonw600sec:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometerAdjustedPressure"
+    groupby: False
+  Z19_BiasMatchCapacitanceMeasureData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z21_TCP_TCR_Temperature120C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TemperatureMonitor_AI"
+      step_label:
+    groupby: False
+  Z37_VCIZeroingValue:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "VCIZeroingValue"
+    groupby: False
+  Z42_ESCAndFacilityPlateScrewTorqueForceCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z61_GasInjectorFunctional4PeaksCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z64_ChamberWaferTransferDACheckAfterSeason:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z70_SnapShot_OES_IntensityVerify_388nm:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z71_MFCZeroFlowOffset_16ProcessGas:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Flow_AI"
+    groupby: False
+  Z75_ESCHeaterOff_SetTCUTemp0C_Check4ZoneESCTemp:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ESCTemperature_AI"
+      step_label:
+    groupby: False
+  Z84_OnWaferDuty40C_50C_60C_70CMean3SigmaData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z86_CheckESC_40COutputValue_whenCollectOnwaferDytuCycle:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z100_MetalM_N2_CheckTCUTemp10C_and_FlowMonitor: #2025/11 Darren for HIR
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "_AI"
+      step_label:
+    groupby: False
+  Z101_MetalM_N2_CheckTCU20ESCTemp60C_4ZoneOutputValue: #2025/11 Darren for HIR
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Step2_OutputValue"
+      step_label:
+    groupby: False
+  Z102_MetalM_N2_AllGasCalOnePoint_3Percentage_95Percentage: #2025/11 Darren for HIR
+    dtype: "xml"
+    spec_attr:
+      - "percent_error"
+      - "flow_requested"
+      - "flow_actual"
+    spec_ao:
+    spec_info:
+      step_title:
+      gas_line_no:
+      gas_name:
+    groupby: False
+  Z103_MetalM_N2_ChamberGasLineLeakRate: #2025/11 Darren for HIR
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z104_MetalM_N2_ESC45C_SinglelChiller_N5CtoP5C_RampUpDown: #2025/11 Darren for HIR
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TimeDelta"
+    groupby: False
+  Z105_MetalM_N2_ESCHeaterOff_SetSingleChillerTCUTemp0C_Check4ZoneESCTemp: #2025/11 Darren for HIR
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Temperature_AI"
+    groupby: False
+  Z173_ESC45C_DualChiller_N5CtoP5C_RampUpDown:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TimeDelta"
+    groupby: False
+  Z176_SinglelChiller_N5CtoP5C_RampUpDown:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TCURamp"
+    groupby: False
+  Z178_MetalM_TCCTCapacitanceMeasureData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z179_MetalMGasOnePointCal:
+    dtype: "xml"
+    spec_attr:
+      - "percent_error"
+      - "flow_actual"
+      - "flow_requested"
+    spec_ao:
+    spec_info:
+      step_title:
+      gas_line_no:
+      gas_name:
+    groupby: False
+  Z191_Chamber_LeakRate:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR45_SeasonDataCheckProcessPressureServoStableTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR47_RunWACtoCheck_4ZoneESCHeaterOutputValueDutyCycleAtTemp60C:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR49_TCP_RFRampUpDownStableTimeRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR52_Bias_RFRampUpDownStableTimeRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR53_TCPBiasRFMatcingServoStableTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR54_DCBiasVoltageServoControlStableTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR55_ESCdechuckingVoltageDropTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR57_DCBiasVoltageDeviationControlCapability:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR60_BackHe_Flow_PressureServoRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR87_AllMFCFlowServoStableTimeat10_50_90_50_10ofFullScale:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z519_SystemDCVoltage:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z520_GFIFunction:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z527_TMP_PressureCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z529_WaferCentering:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z531_PumpPurgeTest:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z532_ChamberCapacitor_MetalM:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z534_BacksideHELeak:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z535_HeliumUPC:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  Z538_N2Ballast:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z545_ChamberRecoverySeason12:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z563_VATdoorAlign:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z564_ExhaustFlow_MetalM:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z565_GasBoxLeakBack_MetalM:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z566_GasBoxSecondValve_MetalM:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z567_GasLineHeaterSetpoint_MetalM:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z568_InletHePressureSetpoint_MetalM:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z569_IRScan_MetalM:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z570_LinerCheck_MetalM:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+##################
+# Versys Metal config
+##################
+Metal:
+  Z4_PinLifterHeightMeasure:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z9_ChamberDryPumpPumpingSpeed:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z12_ChamberLeakRate:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "LeakbackRate"
+    groupby: False
+
+  Z13_CM1ProcessManometerZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometer"
+    groupby: False
+  Z14_CM2ChamberManometerZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ChamberManometer"
+    groupby: False
+  Z15_CM3ForelineManometerZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ForelineManometer_RawAI"
+    groupby: False
+  Z16_CM1ChamberBasePressurePumpDonw600sec:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometerAdjustedPressure"
+    groupby: False
+  Z142_VersysMetalFullScaleGasFlowADIOOffset_8Gas:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "FlowDifferErrorPercentage"
+    groupby: False
+  Z145_SnapShot_OES_IntensityVerify_420nm:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z149_OnWaferVerifyESCSurface40C_MeanRangeData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z160_MFCZeroFlowOffset_8ProcessGas:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Flow_AI"
+    groupby: False
+  Z162_ForlineHeaterJacketLampStatusCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Z164_CheckESCCeramicPinDepth:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z167_GasOnePointCal_Cl2_225sccmAnd_BCL3_123sccm:
+    dtype: "xml"
+    spec_attr:
+      - "percent_error"
+      - "flow_actual"
+      - "flow_requested"
+    spec_ao:
+    spec_info:
+      step_title:
+      gas_line_no:
+      gas_name:
+    groupby: False
+  Z175_SinglelChiller_40Cto50C_RampUpDown:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TCURamp"
+    groupby: False
+  ZR45_SeasonDataCheckProcessPressureServoStableTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR49_TCP_RFRampUpDownStableTimeRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR52_Bias_RFRampUpDownStableTimeRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR53_TCPBiasRFMatcingServoStableTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR55_ESCdechuckingVoltageDropTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZR87_AllMFCFlowServoStableTimeat10_50_90_50_10ofFullScale:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR150_ChamberWallTempAndTCUTemp_SeasonDataCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR151_DCBiasVoltageDeviationControlCapability:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR165_SeasonBurnInRFReliabilityTest:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+#################
+# Microwave2_Strip #
+#################
+Microwave2_Strip:
+  ZS143_StripFullScaleGasFlowADIOOffset_3Gas:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "FlowDifferErrorPercentage"
+    groupby: False
+  ZS146_CM1ProcessManometerZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometer"
+    groupby: False
+  ZS147_CM2ChamberManometerZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ChamberManometer"
+    groupby: False
+  ZS148_ChamberLeakRate:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "LeakbackRate"
+      step_label:
+    groupby: False
+  ZS156_ChamberDryPumpPumpingSpeed:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZS158_StripCM1ChamberBasePressurePumpDonw600sec:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometerAdjustedPressure"
+    groupby: False
+  ZS161_MFCZeroFlowOffset_3ProcessGas:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Flow_AI"
+    groupby: False
+  ZS163_PinLifterHeightMeasure:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZSR152_StripChamber_PedestalSurfaceTemperature_SeasonDataCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZSR153_StripMacroWaveRampUpDownStableTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZSR154_StripSeasonDataCheckProcessPressureServoStableTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZSR155_StripRFMatcingServoStableTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZSR159_StripAllMFCFlowServoStableTimeat10_50_90_50_10ofFullScale:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZSR166_StripSeasonBurnInRFReliabilityTest:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+##################
+# Flex FL config #
+##################
+FlexFL:
+  Z3_FlexFL_15Process_2STG_DGF_MFC_Leakby_Develop:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Pressure"
+      step_no:
+    groupby: False
+  Z3_FlexFLAMMP_MFCLeakby15Process2STG2DGFMSTGI8ALD:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Pressure"
+      step_no:
+    groupby: False
+  ZF101_ChamberLeakRateCheck:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "LeakbackRate"
+      step_label:
+    groupby: False
+  ZF102_MFCZeroFlowOffset_15ProcessGas_2STG:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Flow_AI"
+    groupby: False
+  ZF104_ServoPartialPressureFlow_O2_18sccm_C4F8_19sccm_Ar400Sccm:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometer2AdjustedPressure"
+    groupby: False
+  ZF105_ChamberBasePressurePumpDonw2Hr:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometer2AdjustedPressure"
+    groupby: False
+  ZF107_ProcessManometer2_ZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometer2"
+    groupby: False
+  ZF108_ProcessManometer1_ZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometer"
+    groupby: False
+  ZF109_ChamberManometer_ZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ChamberManometer"
+    groupby: False
+  ZF110_ForelineManometer_ZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Foreline"
+    groupby: False
+
+  ZF117_TER_DutyCycle_OutputValueCheck:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "OutputValue"
+      io_point_spec:
+      tolerance_spec:
+      error:
+      status:
+    groupby: False
+
+  ZF118_4ZoneESC_DutyCycle_OutputValueCheck:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "OutputValue"
+      step_label:
+    groupby: False
+  ZF119_ProcessKitRFHoursLifeTimeFlexFL:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF120_PinLifterHeightMeasure:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF121_LiftPin_UpDown_ElaspeTime:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "WaferLifterMotionElapsedTime"
+    groupby: False
+  ZF123_TER_TCSensor_Height_Check:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZF122_LiftPin_CDA_Pressure_SettingCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF124_ServoPartialPressureFlow_O2_18sccm_C4F8_19sccm_Ar400SccmFlexFLAMMP:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometer2AdjustedPressure"
+    groupby: False
+  ZF125_TER_DutyCycle2ZoneESC_OutputValueCheck:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+      - "error"
+    spec_ao:
+    spec_info:
+      io_point_name: "OutputValue"
+      io_point_spec:
+      tolerance_spec:
+      status:
+    groupby: False
+  ZF126_2ZoneESC_DutyCycle_OutputValueCheck:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "OutputValue"
+      step_label:
+    groupby: False
+  ZF127_OnWaferDuty20C_60CMeanRangeData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF128_OnWaferDuty50C_80CMeanRangeData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF170_GasOnePointCal_CH2F2_8PercentageAndO2_9Percentage:
+    dtype: "xml"
+    spec_attr:
+      - "percent_error"
+      - "flow_requested"
+      - "flow_actual"
+    spec_ao:
+    spec_info:
+      step_title:
+      gas_line_no:
+      gas_name:
+    groupby: False
+  ZF174_SinglelChiller_20Cto30C_RampUpDown:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TCURamp"
+    groupby: False
+
+  ZF177_SinglelChiller_10Cto30C_RampUpDown:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TCURamp"
+    groupby: False
+  ZF182_ChamberWaferTransferDACheckAfterSeason:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF210_ForelineManometer_ZeroOffset: #2025/11 Darren for FL VG
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ForelineManometer"
+    groupby: False
+  ZF308_ProcessManometer1_ZeroOffset: #2025/11 Darren for FL VG
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometer"
+    groupby: False
+  ZF309_ChamberManometer_ZeroOffset: #2025/11 Darren for FL VG
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ChamberManometer"
+    groupby: False
+  ZF372_DualChiller_20Cto30C_RampUpTime:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TimeDelta"
+    groupby: False
+  ZF399_FlexFL_N2_VG_AllGasCalOnePoint: #2025/11 Darren for FL VG
+    dtype: "xml"
+    spec_attr:
+      - "percent_error"
+      - "flow_requested"
+      - "flow_actual"
+    spec_ao:
+    spec_info:
+      step_title:
+      gas_line_no:
+      gas_name:
+    groupby: False
+  ZF502_Setup_Confinement_Ring_Drive:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  ZF503_ChamberLeakRateCheck:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "LeakbackRate"
+      step_label:
+    groupby: False
+
+  ZF504_Chamber_PumpPumpingSpeed:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  ZF507_ChamberNPT:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  ZF508_CalibrateV8Ballast:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  ZF509_SinglelChiller_10Cto30C_RampUpDown:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TCURamp"
+    groupby: False
+
+  ZF511_TER_DutyCycle_OutputValueCheck:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "OutputValue"
+      io_point_spec:
+      tolerance_spec:
+      error:
+      status:
+    groupby: False
+
+  ZF512_TCPHeaterPerformanceCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  ZF513_PartialPressure:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  ZF514_Plasma_Unconfinement_WindowCheck2Plus1:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  ZF515_Plasma_Unconfinement_WindowCheck4Plus1:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  ZF516_WaferTransferPressureEC:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF607_ProcessManometer2_ZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Manometer"
+    groupby: False
+  ZF618_4ZoneESC_DutyCycle_OutputValueCheck: #2025/11 Darren for FL VG
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "OutputValue"
+      step_label:
+    groupby: False
+  ZF619_ProcessKitRFHoursLifeTimeFlexFL:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF620_FlexFL_N2_OnwaferDuty20and60RangeData: #2025/11 Darren for FL VG
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZFR103_AllMFCFlowServoStableTimeat10_50_90_50_10ofFullScale:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  ZFR106_ChamberPressureServoStableTimeSeasonDataCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  ZFR111_RFGeneratorReflectedCoefficientTunningTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZFR112_RF_ReliabilityBuru_In_Test:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZFR113_BackHe_Flow_PressureServoRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZFR115_ESC_Chucking_DechuckingVoltageServoTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZFR116_Plasma_Unconfinement_WindowCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZFR301_RFGeneratorReflectedCoefficientTunningTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZFR315_Flex_N2_RF_Reliability_Test: #2025/11 Darren for FL N2 VG No RF Related alarms
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZFR501_BackHe_Flow_PressureServoRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  ZFR510_ACLineVoltage:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  ZFR613_BackHe_Flow_PressureServoRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+##################
+# Flex GL config #
+##################
+FlexGL:
+  Z3_FlexFL_15Process_2STG_DGF_MFC_Leakby_Develop:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Pressure"
+      step_no:
+    groupby: False
+  Z3_FlexFLAMMP_MFCLeakby15Process2STG2DGFMSTGI8ALD:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Pressure"
+      step_no:
+    groupby: False
+  Z7_LTC_208V_LineVoltage: #2025/11 Darren for MD1
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "LTC_208V_LineVoltageMonitor"
+      step_label:
+    groupby: False
+  ZF101_ChamberLeakRateCheck:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "LeakbackRate"
+      step_label:
+    groupby: False
+  ZF102_MFCZeroFlowOffset_15ProcessGas_2STG:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Flow_AI"
+    groupby: False
+
+  ZFR103_AllMFCFlowServoStableTimeat10_50_90_50_10ofFullScale:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF104_ServoPartialPressureFlow_O2_18sccm_C4F8_19sccm_Ar400Sccm:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometer2AdjustedPressure"
+    groupby: False
+  ZF105_ChamberBasePressurePumpDonw2Hr:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometer2AdjustedPressure"
+    groupby: False
+  ZFR106_ChamberPressureServoStableTimeSeasonDataCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZF107_ProcessManometer2_ZeroOffset: #2025/11 Darren for MD1 
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometer"
+      step_label:
+    groupby: False
+  ZF307_ProcessManometer2_ZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Manometer"
+    groupby: False
+  ZF108_ProcessManometer1_ZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometer"
+    groupby: False
+  ZF109_ChamberManometer_ZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Manometer"
+    groupby: False
+  ZF110_ForelineManometer_ZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Foreline"
+    groupby: False
+  # ZF118_4ZoneESC_DutyCycle_OutputValueCheck:
+  #   dtype: 'xml'
+  #   spec_attr:
+  #     - 'io_point_value'
+  #   spec_ao:
+  #   spec_info:
+  #     io_point_name: 'OutputValue'
+  #     step_label:
+  #   groupby: False
+  ZF318_4ZoneESC_DutyCycle_OutputValueCheck:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "OutputValue"
+      step_label:
+    groupby: False
+  ZF120_PinLifterHeightMeasure: #2025/11 Darren for GL MD1
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF320_PinLifterHeightMeasure9piont:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF121_LiftPin_UpDown_ElaspeTime:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "WaferLifterMotionElapsedTime"
+    groupby: False
+  ZF123_TER_TCSensor_Height_Check:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZF122_LiftPin_CDA_Pressure_SettingCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF124_ServoPartialPressureFlow_O2_18sccm_C4F8_19sccm_Ar400SccmFlexFLAMMP:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometer2AdjustedPressure"
+    groupby: False
+  ZF125_TER_DutyCycle2ZoneESC_OutputValueCheck:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+      - "error"
+    spec_ao:
+    spec_info:
+      io_point_name: "OutputValue"
+      io_point_spec:
+      tolerance_spec:
+      status:
+    groupby: False
+  ZF126_2ZoneESC_DutyCycle_OutputValueCheck:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "OutputValue"
+      step_label:
+    groupby: False
+  ZF127_OnWaferDuty20C_60CMeanRangeData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF128_OnWaferDuty50C_80CMeanRangeData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF170_GasOnePointCal_CH2F2_8PercentageAndO2_9Percentage:
+    dtype: "xml"
+    spec_attr:
+      - "percent_error"
+      - "flow_requested"
+      - "flow_actual"
+    spec_ao:
+    spec_info:
+      step_title:
+      gas_line_no:
+      gas_name:
+    groupby: False
+  ZF174_SinglelChiller_20Cto30C_RampUpDown:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TCURamp"
+    groupby: False
+
+  ZF177_SinglelChiller_10Cto30C_RampUpDown:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TCURamp"
+    groupby: False
+  ZF182_ChamberWaferTransferDACheckAfterSeason:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF200_DualChiller_TempDeviationCheckCH1_10C: #2025/11 Darren for GL MD1
+    dtype: "xml"
+    spec_attr:
+      - "result"
+    spec_ao:
+    spec_info:
+      step_no:
+      result_variable_name:
+    groupby: False
+  ZF201_DualChiller_TempDeviationCheckCH2_60C: #2025/11 Darren for GL MD1
+    dtype: "xml"
+    spec_attr:
+      - "result"
+    spec_ao:
+    spec_info:
+      step_no:
+      result_variable_name:
+    groupby: False
+  ZF304_4ZoneESC_DutyCycle_OutputValueCheckFlexGLDualChiller: #2025/11 Darren for GL MD1
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "OutputValue"
+      step_label:
+    groupby: False
+  ZF340_FlexGL_N2_TCPHeaterTempRampUpDownTime: #2025/11 Darren for GL MD1
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF401_FlexGL_N2_MD1_AllGasCalOnePoint: #2025/11 Darren for MD1
+    dtype: "xml"
+    spec_attr:
+      - "percent_error"
+      - "flow_actual"
+      - "flow_requested"
+    spec_ao:
+    spec_info:
+      step_title:
+      gas_line_no:
+      gas_name:
+    groupby: False
+  ZF433_FlexGL_N2_DFGManometerZeorPoint: #2025/11 Darren for MD1 
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "DualGasFeed"
+      step_label:
+    groupby: False
+  # ZFR111_RFGeneratorReflectedCoefficientTunningTime:
+  #   dtype: 'xml'
+  #   spec_attr:
+  #     - 'comments'
+  #   spec_ao:
+  #   spec_info:
+  #     step_no:
+  #     step:
+  #     description:
+  #   groupby: False
+  ZFR301_RFGeneratorReflectedCoefficientTunningTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZFR112_RF_ReliabilityBuru_In_Test:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  # ZFR113_BackHe_Flow_PressureServoRunSeasonCheck:
+  #   dtype: 'xml'
+  #   spec_attr:
+  #     - 'comments'
+  #   spec_ao:
+  #   spec_info:
+  #     step_no:
+  #     description:
+  #   groupby: False
+  ZF203_TER_DutyCycle_OutputValueCheckFlexGL_DualChiller: #2025/11 Darren for GL MD1
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "OutputValue"
+      io_point_spec:
+      tolerance_spec:
+      error:
+      status:
+    groupby: False
+
+  ZFR309_FlexGL_N2_PressurePeakCheckXMMPstep:  #2025/11 Darren for GL MD1
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  ZFR313_BackHe_Flow_PressureServoRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZFR115_ESC_Chucking_DechuckingVoltageServoTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZFR116_Plasma_Unconfinement_WindowCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZFR501_BackHe_Flow_PressureServoRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  ZF502_Setup_Confinement_Ring_Drive:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  ZF503_ChamberLeakRateCheck:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "LeakbackRate"
+      step_label:
+    groupby: False
+
+  ZF504_Chamber_PumpPumpingSpeed:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  ZF507_ChamberNPT:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  ZF508_CalibrateV8Ballast:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  ZF509_SinglelChiller_10Cto30C_RampUpDown:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TCURamp"
+    groupby: False
+
+  # ZF533_DuallChiller_10Cto30C_RampUpDown:
+  #   dtype: 'xml'
+  #   spec_attr:
+  #     - 'io_point_value'
+  #   spec_ao:
+  #   spec_info:
+  #     io_point_name: 'TCURamp'
+  #   groupby: False
+  ZF310_DuallChiller_10Cto30C_RampUpTime:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TCURamp"
+    groupby: False
+  ZF311_DuallChiller_50Cto70C_RampUpTime: #2025/11 Darren for GL MD1
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TCURamp"
+    groupby: False
+
+  ZFR510_ACLineVoltage:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  ZF511_TER_DutyCycle_OutputValueCheck:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "OutputValue"
+      io_point_spec:
+      tolerance_spec:
+      error:
+      status:
+    groupby: False
+
+  ZF512_TCPHeaterPerformanceCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  ZF513_PartialPressure:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  ZF514_Plasma_Unconfinement_WindowCheck2Plus1:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  ZF515_Plasma_Unconfinement_WindowCheck4Plus1:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  ZF516_WaferTransferPressureEC:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF517_Setup_PCR_Drive:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZF518_BackHe_Flow_PressureServoRunSeasonCheckGL:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF519_RobotSpeedCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  # ZF520_TCU2_50Cto70C_RampUpDown:
+  #   dtype: 'xml'
+  #   spec_attr:
+  #     - 'io_point_value'
+  #   spec_ao:
+  #   spec_info:
+  #     io_point_name: 'TCURamp'
+  #   groupby: False
+  ZF311_DuallChiller_50Cto70C_RampUpTime:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TCURamp"
+    groupby: False
+  ZF521_PartialPressureFlexGL:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZF522_PressureServoStableTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF523_RFGeneratorReflectedCoefficientTunningTimeGL:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF524_Plasma_Unconfinement_WindowCheckGL:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF525_WaferTransferPressureECGL:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF526_FoupCloseWhenIdle:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZF527_APMC4.1TunningCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF528_PressurePeakCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZF529_DualChillerFunctionCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF530_CCDWaferCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZF531_RFRoutingCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZF532_PCR_Conductance:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF534_4ZoneESC_DutyCycle_OutputValueCheckFlexGL:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "OutputValue"
+      status:
+    groupby: False
+  ZF319_ProcessKitRFHoursLifeTimeFlexGL:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF708_FlexGL_N2_OnWaferDuty20C_60C_80C_100C_115C_120C_MeanandRangeData: #2025/11 Darren for GL MD1
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+##################
+# Flex 45 config #
+##################
+Flex45:
+  Z3_Flex45_MFC_Leakby_12Process1TG_DGFMixSTG:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Pressure"
+      step_no:
+    groupby: False
+  Z4_PinLifterHeightMeasure:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z46_SnapShot_OES_IntensityVerify:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+
+  ZF101_ChamberLeakRateCheck:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "LeakbackRate"
+      step_label:
+    groupby: False
+  ZFR106_ChamberPressureServoStableTimeSeasonDataCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZFR103_AllMFCFlowServoStableTimeat10_50_90_50_10ofFullScale:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZF108_ProcessManometer1_ZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometer"
+    groupby: False
+  ZFR112_RF_ReliabilityBuru_In_Test:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZF131_Verify_Turbo_N2PressureWhenPumpDown:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZF132_SnapShot_OES_IntensityVerify_390nm:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZF133_MFCZeroFlowOffset_12ProcessGas_1STG:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Flow_AI"
+    groupby: False
+  ZF134_ChamberBasePressurePumpDonw2HrProcessManometer1:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometerAdjustedPressure"
+    groupby: False
+  ZFR135_RFGeneratorReflectedCoefficientTunningTime60MHz27MHz2MHz:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZFR136_BackSideHePressure_ServoStableTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZFR137_CheckBackSideHeLeakRate:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZFR139_Flex45ESC_Chucking_DechuckingVoltageServoTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZFR141_TCU_TopPlate_Temp_SeasnoDataCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZF142_Check_ESC_PartNumber:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZF174_SinglelChiller_20Cto30C_RampUpDown:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TCURamp"
+    groupby: False
+
+  ZF180_Flex45GasOnePointCal:
+    dtype: "xml"
+    spec_attr:
+      - "flow_actual"
+      - "percent_error"
+      - "flow_requested"
+    spec_ao:
+    spec_info:
+      step_title:
+      gas_line_no:
+      gas_name:
+    groupby: False
+  ZF181_ServoPartialPressureFlow_N2_100sccm_C4F8_9sccm_Ar300SccmFlex45:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometerAdjustedPressure"
+    groupby: False
+  ZR55_ESCdechuckingVoltageDropTime:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+Solo:
+  # F20
+  Solo_PinLifter_202-A52722-018:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Solo_CorvusPin_202-A07908-078:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Solo_Temperature_test_202-A52722-022:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "AI"
+      variable_name: "Solo_A3"
+      step_no:
+    groupby: False
+
+  Solo_Leakrate_test_202-A07908-030:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "LeakbackRate"
+      step_no:
+    groupby: False
+
+  Solo_Capacitor_202-A52722-023:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+  Solo_ESCTempPerformance_202-A52737-047:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Solo_ESCHeaterDutyCycle_202-A52737-047:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Solo_ESCHeliumWithWaferNew_202-A52722-024:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  # Solo_ESCHeliumWithWafer_202-A52722-024:
+  #   dtype: 'xml'
+  #   spec_attr:
+  #     - 'io_point_value'
+  #   spec_ao:
+  #   spec_info:
+  #     io_point_name: 'HeBacksideFlow_AI'
+  #     variable_name: 'Solo_A3'
+  #     step_no:
+  #   groupby: False
+
+  Solo_ESCIdleTemp:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Solo_ESCHelium_202-A52722-025:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "HeBacksideFlow_AI"
+      variable_name: "Solo_A3"
+      step_no:
+    groupby: False
+  Solo_FI_CDA:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Solo_AL_N2:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Solo_PM_N2_CDA:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Solo_PM_exhaust:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Solo_PM_He:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Solo_PM_PCW:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Solo_Turbo_N2_PCW:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Solo_Gasbox_exhaust_CDA:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Solo_Drypump_PCW:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Solo_Chiller_PCW:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Solo_Bcl3:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Solo_PM_V8:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Solo_PM_Conductance:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Solo_PM_GasLineLeak:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Solo_PM_BasePressure:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Solo_PM_BH_Leak:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Solo_PM_Leakback:
+    dtype: "xml"
+    spec_attr:
+      - "leakrate"
+    spec_ao:
+    spec_info:
+      step_no:
+      # description:
+    groupby: False
+  Solo_PM_DD_slope:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Solo_PM_DD_NoPlasma:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Solo_PM_ESC_Resistance:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Solo_PM_TCU_Temp_Flow:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Monitor_AI"
+    groupby: False
+  # F22
+  Z4_PinLifterHeightMeasure:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z6_ESCHeaterResistanceCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z9_ChamberDryPumpPumpingSpeed:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z10_GasLine_Heater_Temp_Monitor:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Temperature_AI"
+    groupby: False
+  Z11_ChamberWall_Temp_60C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Temperature"
+      step_label:
+    groupby: False
+  Z13_CM1ProcessManometerZeroOffset:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometer"
+    groupby: False
+  Z16_CM1ChamberBasePressurePumpDonw600sec:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ProcessManometerAdjustedPressure"
+    groupby: False
+  Z17_MFCZeroFlowOffset_15ProcessGas_2TG_TB:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Flow_AI"
+    groupby: False
+  Z20_Chamber_capacitor_measurement:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z21_TCP_TCR_Temperature80C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      # io_point_name: 'TemperatureMonitor_AI'
+      io_point_name: "^TC.*AI$"
+      step_label:
+    groupby: False
+  Z30_OnWaferDuty_60C_CMeanRangeData:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z37_VCIZeroingValue:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "VCIZeroingValue"
+    groupby: False
+  Z42_ESCAndFacilityPlateScrewTorqueForceCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z61_GasInjectorFunctional4PeaksCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z62_SnapShot_OES_IntensityVerify_388nm:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z72_AATCW_CDA_Pressure_SettingCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z75_ESCHeaterOff_SetTCUTemp0C_Check4ZoneESCTemp:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ESCTemperature_AI"
+      step_label:
+    groupby: False
+  Z76_ChillerTestandAdjustedTCUBypassValve:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "Monitor_AI"
+    groupby: False
+  Z83_Onwafer_HydraESC_5C_TCU20C_TemperatureVerify:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z89_OnWaferHydraOnOff_TCU20C_MeanRange3Sigma:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z173_ESC45C_DualChiller_N5CtoP5C_RampUpDown:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "TimeDelta"
+    groupby: False
+  Z181_Chamber_LeakRate:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z182_ChamberExhaust:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z183_ForelineHeater_Temperature:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ForelineHeater"
+      step_no:
+    groupby: False
+  Z191_Chamber_LeakRate:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  Z201_Pumping_Line_Heater_setting_120C:
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ForelineHeater"
+      step_no:
+    groupby: False
+  Z202_Tool_Install_Check:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z203_GasBox_LeakCheck_With_HeDetect:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      description:
+    groupby: False
+  Z209_Conductance:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  Z210_VCIZeroingValue:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR47_RunWACtoCheck_4ZoneESCHeaterOutputValueDutyCycleAtTemp60C:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZR60_BackHe_Flow_PressureServoRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZFR113_BackHe_Flow_PressureServoRunSeasonCheck:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+
+AutoTRD:
+  toolID:
+    kw: "toolID"
+    dtype: "txt"
+    attr:
+      - "Tool_Mod"
+    groupby: False
+
+  PM_ConfigOpt:
+    kw: '/PM\d+.*?ConfigOptions'
+    dtype: "txt"
+    groupby: False
+
+  PM_CV:
+    kw: '/PM\d{1,2}'
+    dtype: "cv"
+    groupby: False
+
+  SW_Configopt:
+    kw: "/ConfigOptionsAll"
+    dtype: "txt"
+    groupby: False
