@@ -131,7 +131,27 @@ GenericModule: &GenericModule
       step:
       description:
     groupby: False
+  ZTM50_N2_FoupLoadUnload30CyclesWithoutAlarmorMiss: # 2025/11 Wayne for VYY
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
   ZTM51_TMIronmanWaferTransferStability25Slot20Cycles:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
+    groupby: False
+  ZTM51_N2_WaferTransferStabilityWithoutAlarmorMiss: # 2025/11 Wayne for VYY
     dtype: "xml"
     spec_attr:
       - "comments"
@@ -4792,6 +4812,7 @@ FlexFL:
       step_no:
       description:
     groupby: False
+
   ZFR113_BackHe_Flow_PressureServoRunSeasonCheck:
     dtype: "xml"
     spec_attr:
@@ -5686,7 +5707,15 @@ Flex45:
       step:
       description:
     groupby: False
-
+  Z100_Flex_N2_CheckTCUTemp15C_and_FlowMonitor4GPM: #2025/11 Wayne for VYY
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "_AI"
+      step_label:
+    groupby: False
   ZF101_ChamberLeakRateCheck:
     dtype: "xml"
     spec_attr:
@@ -5695,6 +5724,16 @@ Flex45:
     spec_info:
       io_point_name: "LeakbackRate"
       step_label:
+    groupby: False
+  ZFR101_N2_Flex_RFGeneratorTunningTime60MHz27MHz2MHz: #2025/11 Wayne for VYY
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      step:
+      description:
     groupby: False
   ZFR106_ChamberPressureServoStableTimeSeasonDataCheck:
     dtype: "xml"
@@ -5731,6 +5770,24 @@ Flex45:
       step_no:
       description:
     groupby: False
+  ZFR112_N2_Flex_RF_ReliabilityBuru_In_Test: #2025/11 Wayne for VYY
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZFR116_Flex_N2_Plasma_Unconfinement_WindowCheck: #2025/11 Wayne for VYY
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
   ZF131_Verify_Turbo_N2PressureWhenPumpDown:
     dtype: "xml"
     spec_attr:
@@ -5741,6 +5798,15 @@ Flex45:
       description:
     groupby: False
   ZF132_SnapShot_OES_IntensityVerify_390nm:
+    dtype: "xml"
+    spec_attr:
+      - "comments"
+    spec_ao:
+    spec_info:
+      step_no:
+      description:
+    groupby: False
+  ZF132_SnapShot_OES_IntensityVerify_395nm: #2025/11 Wayne for VYY
     dtype: "xml"
     spec_attr:
       - "comments"
@@ -5832,6 +5898,18 @@ Flex45:
     groupby: False
 
   ZF180_Flex45GasOnePointCal:
+    dtype: "xml"
+    spec_attr:
+      - "flow_actual"
+      - "percent_error"
+      - "flow_requested"
+    spec_ao:
+    spec_info:
+      step_title:
+      gas_line_no:
+      gas_name:
+    groupby: False
+  ZF180_Flex45_N2_GasOnePointCal: #2025/11 Wayne for VYY
     dtype: "xml"
     spec_attr:
       - "flow_actual"

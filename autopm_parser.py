@@ -772,7 +772,7 @@ class GenericModule(XmlAutoPM):
                 logger.info(f'metadata-{metadata}') 
             #logger.info(f'metadata-{metadata}')    
             
-        elif re.search('Z4_|Z6_|Z8_|Z9_|Z18_|Z19_|Z20_|Z30_|Z42_|Z61_|Z62_|Z64_|Z70_|Z72_|Z74_|Z77_|Z80_|Z81_|Z83_|Z84_|Z86_|Z89_|Z103_|Z109_|Z145_|Z149_|Z178_|Z182_|Z202_|Z203_|Z209_|Z210_|Z528_|Z529_|Z540_|Z541_|Z542_|Z543_|Z544_|ZTM26_|ZTM58_|ZTM60_|ZTM69_|ZTM78_|ZTM87_|ZTM88_|ZTM89_|ZTM90_|ZTM518_|ZFR106_|ZFR103_|ZFR111_|ZFR301_|ZFR113_|ZFR309_|ZFR313_|ZFR115_|ZFR116_|ZFR136_|ZFR137_|ZFR139_|ZFR141_|ZF127_|ZF119_|ZF122_|ZF123_|ZF128_|ZF131_|ZF132_|ZF182_|ZF320_|ZF340_|ZS156_|ZR44_|ZR45_|ZR47_|ZR48_|ZR49_|ZR52_|ZR53_|ZR54_|ZR55_|ZR56_|ZR57_|ZR60_|ZR73_|ZR90_|ZR115_|ZR150_|ZR151_|ZSR152_|ZSR153_|ZSR154_|ZSR155_|ZSR159_|Solo_Capacitor|Solo_PinLifter|Solo_CorvusPin|Solo_ESCTempPerformance|Solo_ESCIdleTemp|Solo_PM_Leakback|Solo_ESCHeaterDutyCycle|Solo_ESCHeliumWithWaferNew|Solo_FI_CDA|Solo_AL_N2|Solo_PM_BH_Leak|Solo_PM_N2_CDA|Solo_PM_exhaust|Solo_PM_He|Solo_PM_PCW|Solo_Turbo_N2_PCW|Solo_Gasbox_exhaust_CDA|Solo_Drypump_PCW|Solo_Chiller_PCW|Solo_Bcl3|Solo_PM_V8|Solo_PM_Conductance|Solo_PM_GasLineLeak|Solo_PM_BasePressure|Solo_PM_DD_slope|Solo_PM_DD_NoPlasma|Solo_PM_ESC_Resistance|Solo_TM_N2_CDA|Solo_TM_AL_leak|Solo_TM_AL_PumpVent|Solo_TM_AL_PressureDelta|Z206_|Z519_|Z521_|Z524_|Z525_|Z526_|Z527_|Z530_|Z531_|Z532_|Z534_|Z535_|Z536_|Z537_|Z538_|ZTM517_|ZTM522_|ZTM523_|ZTM539_|ZTM540_|ZTM541_|ZTM_N2_58_|ZTM_N2_59_|Z545_|Z546_|Z547_|Z563_|Z564_|Z565_|Z566_|Z568_|Z571_|ZFR501_|ZF502_|ZF504_|ZF507_|ZF508_|ZFR510_|ZF319_|ZF512_|ZF518_|ZF519_|ZF521_|ZF522_|ZF523_|ZF524_|ZF525_|ZF526_|ZF527_|ZF528_|ZF529_|ZF530_|ZF531_|ZF532_|ZF513_|ZF514_|ZF515_|ZF516_|ZF619_|ZF620_|ZF708_|ZFR613_|Z550_|Z551_|Z552_|Z553_|Z554_|Z557_|Z558_|Z559_|Z560_|Z562_|Z_N2_1_|Z_N2_4_|Z_N2_5_|Z_N2_7_|Z_N2_8_|Z_N2_10_|Z_N2_11_|Z_N2_12_|Z_N2_13_', key, re.IGNORECASE): 
+        elif re.search('Z4_|Z6_|Z8_|Z9_|Z18_|Z19_|Z20_|Z30_|Z42_|Z61_|Z62_|Z64_|Z70_|Z72_|Z74_|Z77_|Z80_|Z81_|Z83_|Z84_|Z86_|Z89_|Z103_|Z109_|Z145_|Z149_|Z178_|Z182_|Z202_|Z203_|Z209_|Z210_|Z528_|Z529_|Z540_|Z541_|Z542_|Z543_|Z544_|ZTM26_|ZTM58_|ZTM60_|ZTM69_|ZTM78_|ZTM87_|ZTM88_|ZTM89_|ZTM90_|ZTM518_|ZFR101_|ZFR106_|ZFR103_|ZFR111_|ZFR301_|ZFR113_|ZFR309_|ZFR313_|ZFR115_|ZFR116_|ZFR136_|ZFR137_|ZFR139_|ZFR141_|ZF127_|ZF119_|ZF122_|ZF123_|ZF128_|ZF131_|ZF132_|ZF182_|ZF320_|ZF340_|ZS156_|ZR44_|ZR45_|ZR47_|ZR48_|ZR49_|ZR52_|ZR53_|ZR54_|ZR55_|ZR56_|ZR57_|ZR60_|ZR73_|ZR90_|ZR115_|ZR150_|ZR151_|ZSR152_|ZSR153_|ZSR154_|ZSR155_|ZSR159_|Solo_Capacitor|Solo_PinLifter|Solo_CorvusPin|Solo_ESCTempPerformance|Solo_ESCIdleTemp|Solo_PM_Leakback|Solo_ESCHeaterDutyCycle|Solo_ESCHeliumWithWaferNew|Solo_FI_CDA|Solo_AL_N2|Solo_PM_BH_Leak|Solo_PM_N2_CDA|Solo_PM_exhaust|Solo_PM_He|Solo_PM_PCW|Solo_Turbo_N2_PCW|Solo_Gasbox_exhaust_CDA|Solo_Drypump_PCW|Solo_Chiller_PCW|Solo_Bcl3|Solo_PM_V8|Solo_PM_Conductance|Solo_PM_GasLineLeak|Solo_PM_BasePressure|Solo_PM_DD_slope|Solo_PM_DD_NoPlasma|Solo_PM_ESC_Resistance|Solo_TM_N2_CDA|Solo_TM_AL_leak|Solo_TM_AL_PumpVent|Solo_TM_AL_PressureDelta|Z206_|Z519_|Z521_|Z524_|Z525_|Z526_|Z527_|Z530_|Z531_|Z532_|Z534_|Z535_|Z536_|Z537_|Z538_|ZTM517_|ZTM522_|ZTM523_|ZTM539_|ZTM540_|ZTM541_|ZTM_N2_58_|ZTM_N2_59_|Z545_|Z546_|Z547_|Z563_|Z564_|Z565_|Z566_|Z568_|Z571_|ZFR501_|ZF502_|ZF504_|ZF507_|ZF508_|ZFR510_|ZF319_|ZF512_|ZF518_|ZF519_|ZF521_|ZF522_|ZF523_|ZF524_|ZF525_|ZF526_|ZF527_|ZF528_|ZF529_|ZF530_|ZF531_|ZF532_|ZF513_|ZF514_|ZF515_|ZF516_|ZF619_|ZF620_|ZF708_|ZFR613_|Z550_|Z551_|Z552_|Z553_|Z554_|Z557_|Z558_|Z559_|Z560_|Z562_|Z_N2_1_|Z_N2_4_|Z_N2_5_|Z_N2_7_|Z_N2_8_|Z_N2_10_|Z_N2_11_|Z_N2_12_|Z_N2_13_', key, re.IGNORECASE): 
             attr_name, attr_value = '@step_no', 'comments'
             attr_key = '_'.join( key.split('_')[1:] ) # key.split('_')[-1]
             logger.info(f'key-{key}; metadata-{metadata}; attr_key-{attr_key}') # comments; Step
@@ -860,7 +860,7 @@ class GenericModule(XmlAutoPM):
             logger.info(f'metadata-{metadata}')  # PS           
 
         elif re.search('ZTM28_|ZTM43_|ZTM50_|ZTM51_|ZTM101_|ZTM505_|ZTM507_|ZR165_|ZSR166_|Z162_|ZFR112_|ZF142_|ZF517_|ZFR315_|ZTM542_|Z191_|Z520_|Z567_|Z569_|Z570_', key, re.IGNORECASE): 
-            #logger.info(f'key-{key}; metadata-{metadata}') # comments; Step; value (0) or text/string ('No alarm', 'No RF alarms', part number, 'pass')
+            logger.info(f'key-{key}; metadata-{metadata}') # comments; Step; value (0) or text/string ('No alarm', 'No RF alarms', part number, 'pass')
             attr_name, attr_value = '@step_no', 'comments'
             attr_key = '_'.join( key.split('_')[1:] ) # key.split('_')[-1]
             try: 
@@ -1112,6 +1112,20 @@ class GenericModule(XmlAutoPM):
                 logger.info(f'Cannot convert to value for {key}') 
                 logger.info(f'metadata-{metadata}') 
             #logger.info(f'metadata-{metadata}')
+        elif re.search('ZF180_Flex45_N2_', key, re.IGNORECASE):  #2025/11 Wayne add One PT "percent_error" under specific set point
+            logger.info(f'key-{key}; metadata-{metadata}') 
+            attr_name, attr_name2, attr_value = 'step_title', 'gas_line_no', 'percent_error' #  Gas2_9s
+            parser = re.compile( r'\W*(\w+)sccm') # PS
+            try: # PS
+                if isinstance(metadata[attr_name][0], list): 
+                    for i in range(len(metadata[attr_name][0] ) ) :
+                        sccm =  parser.findall( metadata[attr_name][0][i] )[-1] 
+                        gas = metadata[attr_name2][0][i]                        
+                        metadata.update( { f'{gas}_{sccm}s': [ float(metadata[attr_value][0][i])  if metadata[attr_value][0][i] not in ('None') else 'NULL' ] } ) 
+            except (ValueError, TypeError):
+                logger.info(f'Cannot convert to value for {key}') 
+                logger.info(f'metadata-{metadata}')
+            #logger.info(f'metadata-{metadata}')    
         elif re.search('ZF180_', key, re.IGNORECASE):  # One PT "flow_actual" under specific sccm
             logger.info(f'key-{key}; metadata-{metadata}') 
             attr_name, attr_name2, attr_value = 'step_title', 'gas_line_no', 'flow_actual' #  Gas2_9s
