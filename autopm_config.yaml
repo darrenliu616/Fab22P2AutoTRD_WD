@@ -3565,6 +3565,15 @@ MetalM:
       io_point_name: "ESCTemperature_AI"
       step_label:
     groupby: False
+  Z75_MetalM_N2_ESCHeaterOff_SetTCUTemp0C_Check4ZoneESCTemp: ## 2025/12 Wayne for LA
+    dtype: "xml"
+    spec_attr:
+      - "io_point_value"
+    spec_ao:
+    spec_info:
+      io_point_name: "ESCTemperature_AI"
+      step_label:
+    groupby: False
   Z84_OnWaferDuty40C_50C_60C_70CMean3SigmaData:
     dtype: "xml"
     spec_attr:
@@ -3686,6 +3695,27 @@ MetalM:
     spec_info:
       step_no:
       description:
+    groupby: False
+  Z312_MetalM_N2_LA_AllGasCalOnePoint: #2025/12 Wayne for LA
+    dtype: "xml"
+    spec_attr:
+      - "percent_error"
+      - "flow_requested"
+      - "flow_actual"
+    spec_ao:
+    spec_info:
+      step_title:
+      gas_line_no:
+      gas_name:
+    groupby: False
+  Z313_MetalM_N2_CuRDL_PVFullOpenFlowO2_500sccm10PercentCheckPressure: #2025/12 Wayne for LA
+    dtype: "xml"
+    spec_attr:
+      - "variable_value"
+    spec_ao:
+    spec_info:
+      step_no:
+      variable_name:
     groupby: False
   ZR45_SeasonDataCheckProcessPressureServoStableTime:
     dtype: "xml"

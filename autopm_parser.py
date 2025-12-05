@@ -771,7 +771,22 @@ class GenericModule(XmlAutoPM):
                 logger.info(f'Cannot convert to value for {key}') 
                 logger.info(f'metadata-{metadata}') 
             #logger.info(f'metadata-{metadata}')    
-            
+
+        elif re.search('Z313_', key, re.IGNORECASE):  # 2025/12 Wayne for LA add variable_value
+            #logger.info(f'key-{key}; metadata-{metadata}') 
+            attr_name, attr_value = 'step_no', 'variable_value'
+            attr_key = '_'.join( key.split('_')[1:] ) # key.split('_')[-1]
+            try:
+                if isinstance(metadata[attr_name][0], list):
+                    for i in range(len(metadata[attr_name][0] ) ) :
+                        metadata.update( { f'{attr_key}{metadata[attr_name][0][i]}': [ float(metadata[attr_value][0][i]) if metadata[attr_value][0][i]!='None' else 'NULL' ] } ) 
+                else:  # str 
+                    metadata[ f'{attr_key}{metadata[attr_name][0]}' ] = [ float(metadata[attr_value][0]) if metadata[attr_value][0]!='None' else 'NULL' ] # PS
+            except ValueError:         
+                logger.info(f'Cannot convert to value for {key}') 
+                logger.info(f'metadata-{metadata}') 
+            #logger.info(f'metadata-{metadata}')    
+             
         elif re.search('Z4_|Z6_|Z8_|Z9_|Z18_|Z19_|Z20_|Z30_|Z42_|Z61_|Z62_|Z64_|Z70_|Z72_|Z74_|Z77_|Z80_|Z81_|Z83_|Z84_|Z86_|Z89_|Z103_|Z109_|Z145_|Z149_|Z178_|Z182_|Z202_|Z203_|Z209_|Z210_|Z528_|Z529_|Z540_|Z541_|Z542_|Z543_|Z544_|ZTM26_|ZTM58_|ZTM60_|ZTM69_|ZTM78_|ZTM87_|ZTM88_|ZTM89_|ZTM90_|ZTM518_|ZFR101_|ZFR106_|ZFR103_|ZFR111_|ZFR301_|ZFR113_|ZFR309_|ZFR313_|ZFR115_|ZFR116_|ZFR136_|ZFR137_|ZFR139_|ZFR141_|ZF127_|ZF119_|ZF122_|ZF123_|ZF128_|ZF131_|ZF132_|ZF182_|ZF320_|ZF340_|ZS156_|ZR44_|ZR45_|ZR47_|ZR48_|ZR49_|ZR52_|ZR53_|ZR54_|ZR55_|ZR56_|ZR57_|ZR60_|ZR73_|ZR90_|ZR115_|ZR150_|ZR151_|ZSR152_|ZSR153_|ZSR154_|ZSR155_|ZSR159_|Solo_Capacitor|Solo_PinLifter|Solo_CorvusPin|Solo_ESCTempPerformance|Solo_ESCIdleTemp|Solo_PM_Leakback|Solo_ESCHeaterDutyCycle|Solo_ESCHeliumWithWaferNew|Solo_FI_CDA|Solo_AL_N2|Solo_PM_BH_Leak|Solo_PM_N2_CDA|Solo_PM_exhaust|Solo_PM_He|Solo_PM_PCW|Solo_Turbo_N2_PCW|Solo_Gasbox_exhaust_CDA|Solo_Drypump_PCW|Solo_Chiller_PCW|Solo_Bcl3|Solo_PM_V8|Solo_PM_Conductance|Solo_PM_GasLineLeak|Solo_PM_BasePressure|Solo_PM_DD_slope|Solo_PM_DD_NoPlasma|Solo_PM_ESC_Resistance|Solo_TM_N2_CDA|Solo_TM_AL_leak|Solo_TM_AL_PumpVent|Solo_TM_AL_PressureDelta|Z206_|Z519_|Z521_|Z524_|Z525_|Z526_|Z527_|Z530_|Z531_|Z532_|Z534_|Z535_|Z536_|Z537_|Z538_|ZTM517_|ZTM522_|ZTM523_|ZTM539_|ZTM540_|ZTM541_|ZTM_N2_58_|ZTM_N2_59_|Z545_|Z546_|Z547_|Z563_|Z564_|Z565_|Z566_|Z568_|Z571_|ZFR501_|ZF502_|ZF504_|ZF507_|ZF508_|ZFR510_|ZF319_|ZF512_|ZF518_|ZF519_|ZF521_|ZF522_|ZF523_|ZF524_|ZF525_|ZF526_|ZF527_|ZF528_|ZF529_|ZF530_|ZF531_|ZF532_|ZF513_|ZF514_|ZF515_|ZF516_|ZF619_|ZF620_|ZF708_|ZFR613_|Z550_|Z551_|Z552_|Z553_|Z554_|Z557_|Z558_|Z559_|Z560_|Z562_|Z_N2_1_|Z_N2_4_|Z_N2_5_|Z_N2_7_|Z_N2_8_|Z_N2_10_|Z_N2_11_|Z_N2_12_|Z_N2_13_', key, re.IGNORECASE): 
             attr_name, attr_value = '@step_no', 'comments'
             attr_key = '_'.join( key.split('_')[1:] ) # key.split('_')[-1]
@@ -1050,7 +1065,7 @@ class GenericModule(XmlAutoPM):
                 logger.info(f'metadata-{metadata}') 
             #logger.info(f'metadata-{metadata}')   
 
-        elif re.search('Z102_', key, re.IGNORECASE):  # One PT "error percent" #2025/11 Darren for MeatalM and NXP 
+        elif re.search('Z102_|Z312_', key, re.IGNORECASE):  # One PT "error percent" #2025/11 Darren for MeatalM and NXP #2025/12 Wayne for LA
             #logger.info(f'key-{key}; metadata-{metadata}') 
             attr_name, attr_name2, attr_value = 'step_title', 'gas_line_no', 'percent_error' #  Gas6_95_abs
             parser = re.compile( r'\W*(\d+(?:\.\d+)?)%') #include float %
